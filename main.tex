@@ -36,7 +36,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={MFIT Statistical Analysis Appendix},
+  pdftitle={M-FIT Statistical Analysis Plan},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -75,23 +75,9 @@
 \usepackage{vhistory}
 \usepackage{titling}
 \usepackage{amsmath}
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
 \usepackage{mathtools}
-\DeclarePairedDelimiter\nint{\lfloor}{\rceil}
-\newcommand*{\argminl}{\argmin\limits}
-\newcommand*{\argmaxl}{\argmax\limits}
 \usepackage{tcolorbox}
-\newcommand{\blandscape}{\begin{landscape}}
-\newcommand{\elandscape}{\end{landscape}}
 \usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LO]{MFIT Statistical Appendix}
-\fancyfoot[LO]{Version 0.1, Apr, 2021}
-\fancyfoot[RO]{\thepage\ of \pageref{LastPage}}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -106,6 +92,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{bbding}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -113,10 +100,36 @@
     filecolor=blue,
     urlcolor=blue,
 }
-
 \urlstyle{same}
+\usepackage[backend=biber,style=ieee]{biblatex} %Imports biblatex package
+\addbibresource{main.bib} %Import the bibliography file
 
-\title{MFIT Statistical Analysis Appendix}
+
+% Declare commands
+% -----------------
+
+% The current version and title of the document (keep headers consistent)
+\newcommand{\currentVersion}{July 2021 - Version 0.2}
+\newcommand{\currentTitle}{M-FIT Statistical Analysis Plan}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclarePairedDelimiter\nint{\lfloor}{\rceil}
+\newcommand*{\argminl}{\argmin\limits}
+\newcommand*{\argmaxl}{\argmax\limits}
+
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{\currentTitle}
+\fancyfoot[LO]{\currentVersion}
+\fancyfoot[RO]{\thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\title{\currentTitle}
 \usepackage{etoolbox}
 \makeatletter
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
@@ -125,58 +138,94 @@
 \makeatother
 \subtitle{}
 \author{}
-\date{\vspace{-2.5em}Apr 2021 - Version 0.1}
+\date{\vspace{-2.5em}\currentVersion}
 
 \begin{document}
 \maketitle
 
 {
-\setcounter{tocdepth}{2}
-\tableofcontents
+  \setcounter{tocdepth}{2}
+  \tableofcontents
 }
+
 \hypertarget{version-history}{%
-\section*{Version History}\label{version-history}}
+  \section*{Version History}\label{version-history}}
 \addcontentsline{toc}{section}{Version History}
 
-\begin{center}
-    \begin{tabular}{lllp{5cm}}
-    \hline
-    Version & Date & Author & Description \\ \hline
-    0.1 & 2021-04-23 & MAJ & First draft \\
-    \hline
-    \end{tabular}
-\end{center}
-
-\hypertarget{abbreviations}{%
-\section*{Abbreviations}\label{abbreviations}}
-\addcontentsline{toc}{section}{Abbreviations}
-
 \begin{table}[H]
-\centering
-\begin{tabular}{ll}
-\toprule
-Abbreviation & Definition\\
-\midrule
-CKD & Chronic Kidney Disease \\
-FACIT-F & Functional Assessment of Chronic Illness Therapy – Fatigue\\
-\bottomrule
-\end{tabular}
+  \renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \begin{tabular}{lllp{5cm}}
+      \hline
+      Version & Date       & Author & Description   \\ \hline
+      0.1     & 2021-04-23 & MAJ    & First draft   \\
+      0.2     & 2021-07-27 & JAT    & Revisions \\
+      \hline
+    \end{tabular}
+  \end{center}
 \end{table}
 
 \clearpage
 
-\hypertarget{overview}{%
-\section{Overview}\label{overview}}
+\hypertarget{preface}{%
+  \section*{Preface}\label{Preface}}
 
-MFIT (Structured exercise progra\underline{M} to reduce \underline{F}atigue \underline{I}n patients receiving dialysis: a Bayesian adaptive \underline{T}rial) will compare exercise regimes delivered by exercise physiologists and a mobile-app that aim to alleviate fatigue in patients with kidney failure.
+This statistical analysis plan (SAP) outlinse the data and procedures for analysing effectiveness of trial interventions from the protocol M-FIT: an adaptive, randomised trial examining the comparative effectiveness of structured exercise programs on fatigue experienced by adult patients receiving dialysis.
+
+The following documents were reviewed when preparing this SAP:
+
+- M-FIT Study Protocol version 0.9.6
+
+\clearpage
+
+\hypertarget{abbreviations}{%
+  \section*{Abbreviations}\label{abbreviations}}
+\addcontentsline{toc}{section}{Abbreviations}
+
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \centering
+  \begin{tabular}{p{0.2\textwidth}p{0.7\textwidth}}
+    \toprule
+    Abbreviation  & Definition                                                                                      \\
+    \midrule
+    AKTN          & Australasian Kidney Trials Network                                                              \\
+    CKD           & Chronic Kidney Disease                                                                          \\
+    FACIT-Fatigue & Functional Assessment of Chronic Illness Therapy – Fatigue                                      \\
+    HADS          & Hospital Anxiety and Depression Scale                                                           \\
+    HD            & Haemodialysis                                                                                   \\
+    PD            & Peritoneal dialysis                                                                             \\
+    M-FIT         & Structured exercise program to reduce fatigue in patients receiving dialysis: an adaptive trial \\
+    PFS           & Pittsburgh Fatigability Scale                                                                   \\
+    QALY          & Quality of life years                                                                           \\
+    SAP           & Statistical analysis plan                                                                       \\
+    SONG          & Standardised Outcomes In Nephrology                                                             \\
+    SONG-HD       & Standardised Outcomes In Nephrology - Haemodialysis                                             \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\clearpage
+
+\hypertarget{introduction}{%
+  \section{Introduction}\label{Introduction}}
+
+
+\hypertarget{background}{%
+  \subsection{Background and rationale}\label{background}}
+
+Fatigue is one of the most common and debilitating symptoms in patients on dialysis.
+Patients with chronic kidney disease (CKD) have also explicitly identified non-pharmacological self-management of lifestyle interventions to improve symptoms as a top research priority.
+Based on some evidence to indicate that regular exercise improves cardiovascular outcomes, physical activity and quality of life across all stages of CKD, the primary objective of the M-FIT (Structured exercise progra\underline{M} to reduce \underline{F}atigue \underline{I}n patients receiving dialysis: an adaptive \underline{T}rial) study is to determine whether home-based exercise can improve fatigue in patients on dialysis.
+
+M-FIT is a multi-centre, adaptive randomised comparative effectiveness trial of four structured exercise programs in adult patients receiving dialysis.
+The trial will compare exercise regimes delivered by exercise physiologists and a mobile-app that aim to alleviate fatigue in patients on dialysis.
 Specifically, the trial will evaluate
 
 \begin{itemize}
-\item the comparative effectiveness of a structured exercise program on fatigue in patients receiving dialysis
-\item the effectiveness of each therapy relative to a pseudo-control arm
+  \item the comparative effectiveness of a structured exercise program on fatigue in patients receiving dialysis
+  \item the effectiveness of each therapy relative to a pseudo-control arm
 \end{itemize}
-
-The primary outcome is baseline-adjusted fatigue at 12 weeks follow up as informed by the FACIT-Fatigue scores.
 
 The main stakeholder/decision maker is the Australasian Kidney Trials Network (AKTN), who will facilitate translating and disseminating trial findings into treatment guidelines.
 The full stakeholder pool is diverse with a range of objectives.
@@ -188,10 +237,10 @@ The score ranges from 0 to 52 and is reverse coded so that \underline{higher sco
 The intervention therapies comprise:
 
 \begin{enumerate}
-    \item pseudo-control: non-exercise based activity (stretching)
-    \item walking
-    \item resistance and aerobic
-    \item resistance-only
+  \item pseudo-control: non-exercise based activity (stretching)
+  \item walking
+  \item resistance and aerobic
+  \item resistance-only
 \end{enumerate}
 
 The therapies are delivered via an initial face-to-face assessment with an exercise physiologist and are followed-up over 12 weeks with weekly telehealth visits in weeks 1 to 4, 6 and 8 and a final follow up session in week 12.
@@ -205,8 +254,34 @@ The trial in its current form includes consideration of patient preference as a 
 
 \clearpage
 
+\hypertarget{background}{%
+  \subsection{Study Objectives}\label{objectives}}
+
+
+\hypertarget{primary-objective}{
+  \subsubsection{Primary Objective}{\label{primary-objective}}
+}
+
+To assess the comparative effectiveness of alternative structured exercise programs, co-designed with patients, on fatigue, as measured by FACIT-Fatigue, in adult patients receiving dialysis.
+
+\hypertarget{secondary-objectives}{
+  \subsubsection{Secondary Objectives}{\label{secondary-objectives}}
+}
+
+\begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item To assess the comparative effectiveness of four structured exercise programs on additional measures of fatigue, quality of life, mood, life participation, frailty, changes in body composition, exercise capacity, neuromuscular fitness, balance, physical activity, sleep, exercise adherence, SONG core outcomes, and hospital admissions.
+  \item To compare the cost-effectiveness of four structured exercise programs in terms of incremental cost, and incremental health outcomes (quality-adjusted life year (QALY) and clinically important difference in fatigue).
+  \item To assess the impact, fidelity, facilitators, and barriers of implementing the exercise programs in patients receiving dialysis.
+  \item To evaluate the influence (if any) of participant preferences for the assigned interventions on fatigue and exercise adherence.
+  \item To assess hospital admissions, mortality, exercise-related injuries, and cardiovascular events for all participants.
+\end{enumerate}
+
+
+\clearpage
+
 \hypertarget{to-be-discussed}{%
-\subsection{Notes to self (please ignore, these will be removed later)}\label{to-be-discussed}}
+  \subsection{Notes to self (please ignore, these will be removed later)}\label{to-be-discussed}}
 
 These are notes made by MAJ as the SAP is being developed.
 Ultimately, they will either be integrated into the main text or deleted.
@@ -220,190 +295,321 @@ Post randomisation causes of confounding.
 
 \clearpage
 
-\hypertarget{structure-of-trial}{%
-\section{Structure of Trial}\label{structure-of-trial}}
+\hypertarget{study-design}{%
+  \section{Study Design}\label{study-design}}
+
+The following information is summarised here from the study protocol.
+For full details, refer to the relevant section in the study protocol.
+
+\hypertarget{overview}{
+  \subsection{Overview}\label{overview}}
+
+The study is a propsective, multi-centre, adaptive, randomised comparative effectiveness trial.
+The design uses group sequential methods and Bayesian response-adaptive randomisation.
+
 
 \hypertarget{target-population}{%
-\subsection[Target Population]{\texorpdfstring{Target Population\footnote{From protocol.}}{Target Population}}\label{target-population}}
+  \subsection{Target Population}\label{target-population}}
 
-\textbf{Inclusion criteria}
+All patients on haemodialysis (HD) or peritoneal dialysis (PD) who can provide informed consent in English, will be invited to participate in the trial.
+Patients who are new to dialysis or those who have received a kidney transplant will be excluded.
+Patient-reported outcome measures form a substantial part of the assessment in the trial, and only English versions are used.
+Therefore, the eligibility criteria ensure that participants can comprehend the questions and respond accurately.
+To ensure safety of the participants in the trial, exercise professionals will screen eligible patients for their capability to carry out movements required in all four exercise arms.
 
-All patients on haemodialysis or peritoneal dialysis who are able to provide informed consent in English, will be invited to participate in the trial.
+\hypertarget{inclusion-criteria}{
+  \subsubsection{Inclusion Criteria}\label{inclusion-criteria}
+}
 
-To be eligible to participant in this trial, the participant must satisfy the following criteria:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item Patients on maintenance haemodialysis or peritoneal dialysis (>3 months) with a life expectancy of $\ge$ 12 months.
-\item Patients > 18 years of age
-\item Patients who are able to provide informed consent
-\item Patients who are able to speak, read and write English
-\item Patients who are physically capable of carrying out all three exercises at intensity level 1 at minimum.
-\item Patients who are not enrolled in a structured exercise program
-\end{enumerate}
-
-\textbf{Exclusion criteria}
-
-Participants are excluded from MFIT if they meet any of the following criteria;
+To be eligible to participate in this trial, the participant must satisfy the following criteria:
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item Patients who are new to dialysis or those who have received a kidney transplant
-\item Patients whose English is insufficient to understand study materials and/or respond to the study questions
-\item Patients who are deemed unsuitable by exercise physiologists screening
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item on maintenance haemodialysis or peritoneal dialysis (>3 months) with a life expectancy of $\ge$ 12 months.
+  \item > 18 years of age
+  \item able to provide informed consent
+  \item able to speak, read and write English
+  \item access to a smart phone or tablet
+  \item physically capable of carrying out all three exercises at intensity level 1 at minimum (as assessed by the site exercise professional).
 \end{enumerate}
 
-\hypertarget{standard-of-care}{%
-\subsection{Standard of Care/Control Group}\label{standard-of-care}}
+\hypertarget{exclusion-criteria}{
+  \subsubsection{Exclusion Criteria}\label{exclusion-criteria}
+}
 
-The pseudo-control group will receive initial and follow up sessions with the exercise physiologist for fitness, frailty and physical activity assessments. They will also be provided with the mobile application to record the effects of any exercise or structured non-exercise-activity.
-While this group will be used as a referent in the final analysis, trial decisions will be made on the basis of comparative effectiveness across all 4 arms.
+Participants are excluded from M-FIT if they meet any of the following criteria:
 
-\hypertarget{comparators}{%
-\subsection{Comparators}\label{stancomparators}}
+\begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item presence of known cardiovascular disease that places the participant at an unacceptable risk of untoward event occurring during exercise training (as deemed by treating physician)
+  \item have received or are expected to receive a kidney transplant within 12 months
+  \item currently meeting the physical activity guidelines (150 mins/week of moderate intensity aerobic (cardio) activity and 2 sessions/week of resistance training)
+\end{enumerate}
 
-The three \textit{active} interventions are walking, mixed cardio, and resistance with intensity levels L1-L5 (see protocol for definitions).
 
-\hypertarget{subgroups}{%
-\subsection{Subgroups}\label{subgroups}}
+\hypertarget{interventions}{
+  \subsection{Interventions}\label{interventions}
+}
 
-Preference is the only subgroup that has been identified for evaluation.
+The trial interventions consist of four different structured exercise programs: walking, resistance training, combination aerobic (cardio) and resistance training, and stretching.
+There are five levels of exercise prescription within the walking, resistance training, and aerobic and resistance training intervention arms.
+At baseline, the administering exercise professional will select the level of exercise deemed most appropriate for the patient.
+The stretching arm will be assigned a set of stretches to complete for 12 weeks.
+
+All participants will be provided with a mobile application.
+The mobile application gives the participant access to demonstration videos applicable to their allocated group, and trial outcome assessment questionnaires.
+Participants will be asked to download the application to their device.
+The site exercise professional and study coordinator will be able to help with set up and setting of the initial treatment arm and exercise intensity level.
+Once a participant has finished the treatment portion of the trial (12 weeks) they will be able to access all treatment arms and intensity levels.
+
+The complete intervention will consist of:
+
+\begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item At baseline: an assessment (90 mins) with an exercise professional to assign a suitable initial intensity level and demonstration of the exercises, provision of the app and instructions by the research team.
+  \item Weeks 1 to 4: weekly check-up sessions (10 min telehealth or in person) with the exercise professional and possible adjustment of the intensity level based on clinical and personal factors to ensure appropriate exercise intensity.
+  \item Weeks 5 to 8: fortnightly check-up sessions (10 min telehealth or in person) with the exercise professional and possible adjustment of the intensity level.
+  \item Weeks 12: final assessment session (90 mins) which repeats baseline assessments to assess exercise capacity. At this final assessment the exercise professional will include motivational interview and adherence strategies to improve exercise adherence during the 12 to 36-week period.
+  \item Week 36: follow-up session (90 mins) to assess exercise capacity.
+\end{enumerate}
+
+Participants’ adherence to the interventions will be assessed with a self-report measure within the M-FIT application.
+Research coordinators for each site will monitor and document participants’ data entry on adherence on a weekly basis with a check-up call to participants who have missed two or more sessions.
+
+For full details of what each individual intervention entails, refer to the study protocol, Sections 5.5 and 15.3.
 
 \hypertarget{randomisation}{%
-\subsection{Randomisation}\label{randomisation}}
+  \subsection{Randomisation}\label{randomisation}}
 
 Eligible participants will be randomised by research staff via a proprietary randomisation system and their assignment transcribed to the RedCap patient database.
 The randomisation system was developed, validated and hosted by University of Sydney and has secure access, full audit trial and redundancy.
 Participants, clinical staff and analysts are unblinded to allocation.
 
-Allocations are generated for each individual and there is no pre-computed randomisation list.
-The first 100 patients will be assigned to one of the four treatments arms with equal probability.
-Thereafter, randomisation probabilities will be set proportional to the probability that the arm is the most effective at reducing fatigue at 12 weeks.
+Participants will initially be randomised in 1:1:1:1 allocation between the four intervention arms.
+Following each interim analysis, the allocation ratios to intervention arms will be updated to be proportional to the posterior probability that the intervention is most effective at reducing fatigue at 12 weeks.
+If an intervention's posterior probability of being best falls below a pre-specified threshold then the allocation to that intervention may be set to 0 and the intervention dropped from the trial.
+If the probability exceeds a pre-specified threshold then that intervention may be declared superior and randomisation stopped.
+
 Randomisation probabilities will be updated by the trial statistician directly after the completion of each interim analysis.
 Section \ref{response-adaptive-randomisation} contains further details on the calculation used to compute the randomisation probabilities.
 
+\hypertarget{blinding}{%
+  \subsection{Blinding}\label{blinding}}
+
+  Due to the nature of the intervention, the site investigators, AKTN, treating clinicians, patients and the analysis group will not be blinded to treatment allocation. 
+  The trial steering committee, statistical analysis plan developers, and outcome assessors will be blinded. 
+
+\hypertarget{sample-size}{%
+  \subsection{Sample Size}\label{sample-size}}
+
+The study sample size was selected on the basis of feasability and to target a mean difference of half a standard-deviation in FACIT-Fatigue scores.
+Assuming a two-sample independent one-sided $t$-test of size 0.025 and an alternative hypothesis of a difference in means of $\Delta=0.5\sigma$ ($\sigma$ the standard deviation), a sample size of 85 per arm has power 0.9.
+Ignoring multiplicities, this results in a total sample size of 340 across four arms.
+Allowing for a conservative amount of drop-out, this total sample size was increased to 400.
+
+Further evaluation of power and trial operating characteristics for the adaptive design were accomplished via simulations.
+We undertook 2,000 simulations under each of the trial scenarios of no treatment effects, and alternative scenarios where any superior treatments had an effect size of $0.5\sigma$ on FACIT-Fatigue scores, with a maximum sample size of 400 and assumed 20\% probability of drop-out.
+The target allocation to each arm was initially equal and updated by using Bayesian response adaptive randomisation.
+The simulations assumed compound symmetric correlation of 0.25 between the longitudinal outcomes of a participant.
+
+In the null scenario, using a superiority decision threshold of 0.98 and inferiority threshold of 0.02/(number of active arms - 1), the probability of deciding any arm superior was < 1\% and the probability of dropping each arm as inferior was approximately 10\%.
+When one intervention was superior to all others by $0.5\sigma$, a superiority threshold of 0.98 resulted in a decision of superiority of the superior arm in 87\% of trials and a decision of inferiority for the superior arm in 0\% of trials.
+
 \clearpage
 
-\hypertarget{endpoints}{%
-\section{Endpoints}\label{endpoints}}
+\hypertarget{outcomes}{
+  \section{Study Outcomes}\label{outcomes}}
 
-\hypertarget{primary-outcome}{%
-\subsection{Primary Outcome}\label{primary-outcome}}
+A summary of the study outcomes and their measurement occasions are provided in Table \ref{tab:study-outcomes}.
+For full details of each outcome refer to the relevant section.
 
-The primary outcome is fatigue at 12 weeks post randomisation as measured by the FACIT-Fatigue evaluated relative to baseline fatigue.
-For FACIT-Fatigue example norms for males and females between ages 18 to 70+ see \url{https://www.sciencedirect.com/science/article/pii/S1098301518302973}.
+\begin{table}[!ht]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Outcome                                                  & \makecell{Baseline\\(Clinic)}   & \makecell{Week 4\\(Phone)}     & \makecell{Week 8\\(Phone)}     & \makecell{Week 12\\(Clinic)}    & \makecell{Week 36\\(Clinic)}    \\
+\midrule
+\multicolumn{6}{l}{\textbf{Primary outcome}}                                                                                      \\
+\hspace{1em}FACIT-Fatigue                                & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\multicolumn{6}{l}{\textbf{Secondary outcomes}}                                                                                   \\
+\hspace{0.5em}\textit{Patient-reported outcomes}         &                    &            &            &            &            \\
+\hspace{1em}SONG-HD-F                                    & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}PFS                                          & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}EQ-5D-5L                                     & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}HADS                                         & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}PROMIS                                       & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{0.5em}\textit{Exercise professional assessments} &                    &            &            &            &            \\
+\hspace{1em}BMI                                          & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}Waist circumference                          & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}30 sec sit to stand                          & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}Modified wall push-up test                   & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}Timed up-and-go                              & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}6 min walk test                              & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}Arm curl test                                & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}Hand grip strength                           & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}Tinetti balance test                         & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}Fried Frailty Index                          & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}Physical activity/sleep                      & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}Exercise adherence                           &                    & \Checkmark & \Checkmark & \Checkmark &            \\
+\hspace{0.5em}\textit{Adverse events of interest}        &                    &            &            &            &            \\
+\hspace{1em}Hospitalisations                             &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}Death                                        &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}Cardiac events                               &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}Falls                                        &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}Exercise related injuries                    &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}Pre-exercise safety questionnaire            &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{0.5em}\textit{SONG-HD core outcomes}             &                    &            &            &            &            \\
+\bottomrule
+\end{tabular}
+\caption{Summary of study outcomes and measurement their occasions.}
+\label{tab:study-outcomes}
+\end{table}
 
-\hypertarget{secondary-outcomes}{%
-\subsection{Secondary Outcomes}\label{secondary-outcomes}}
+\hypertarget{primary-outcome}{
+  \subsection{Primary Outcome}\label{primary-outcome}}
 
-The secondary outcomes are as follows.
+The primary outcome is fatigue as measured by the FACIT-Fatigue scale \cites{yellen1997measuring}{cella2002fatigue} at 12-weeks post-randomisation.
+FACIT-Fatigue is a 13-item Likert scale, with each Likert item scored from 0 to 4.
+Level of fatigue is measured as the total score aggregated across the 13 items, ranging from 0 to 52.
 
-TBD - are groupings, ordering correct?
+FACIT-Fatigue scores will be measured at baseline visit (week 0) and study visits at weeks 4, 8, and 12.
+The data must be collected within five days of the scheduled visit.
+For FACIT-Fatigue example norms for males and females between ages 18 to 70+ see \cite{montan2018general}.
+
+\hypertarget{secondary-outcomes}{
+  \subsection{Secondary Outcomes}\label{secondary-outcomes}}
+
+\hypertarget{pro-outcomes}{
+  \subsubsection{Patient-Reported Outcomes}\label{pro-outcomes}}
+
+The \textbf{Standardised Outcomes In Nephrology - Haemodialysis - Fatigue (SONG-HD-F)}...
+
+The \textbf{Pittsburgh Fatigability Scale (PFS)} \cite{glynn2015pittsburgh} is a one-page, self-administered questionnarie that asks about level of exertion on a scale from 0 to 5 on 10 different activities.
+For each activity, a response for both physical and mental fatigue are elicited.
+A total score for phystical and mental fatigue are obtained by summing the respective rating for each activity, resulting in two scores each ranging from 0 to 50.
+
+\textbf{EQ-5D-5L} is a standardised measure of health-related quality of life that comprises five dimensions: mobility, self-care, usual activities, pain and discomfort, and anxiety and depression.
+The five dimension each have five response levels of severity giving health scores ranging from 11111 (full health) to 55555 (worst health), equating to $5^5 = 3125$ potential health states.
+For analysis, the responses are routinely converted into an index representing the utility of the health state.
+The conversion, while not recommended by the EuroQol Group\footnote{EQ visual analog scale (VAS) is what EuroQol recommends for statistical analyses.}, proceeds by applying a societal preference function which generates scores anchored at 0 for death and 1 for perfect health and represent a societal valuation of health-related quality-of-life.
+The conversion only works for complete data.
+See \url{https://cran.r-project.org/web/packages/eq5d/vignettes/eq5d.html} and \url{https://link.springer.com/book/10.1007\%2F978-3-030-47622-9} for more detail.
+
+
+The \textbf{Hospital Anxiety and Depression Scale (HADS)} \cite{zigmond1983hospital} is a questionnaire designed to measure anxiety and depression in a general medical population of patients.
+It comprises seven questions each for anxiety and depression scored separately.
+Each item is scored from 0 to 3 and aggregated across the seven questions resulting in two scores in the range of 0 to 21, one for anxiety and one for depression.
+
+\textbf{Patient-reported outcomes:}
+\begin{itemize}
+  \item Quality of Life (EQ-5D-5L)
+  \item Fatigue (SONG-HD Fatigue measure)
+  \item Fatigue (Pittsburgh Fatigability Scale)
+  \item Life participation (PROMIS Ability to Participate in Social Roles and Activities)
+  \item Mood (Hospital Anxiety and Depression Scale)
+\end{itemize}
 
 \textbf{Clinical Outcomes:}
 \begin{itemize}
-    \item Vascular access function (rate of intervention)
-    \item Technique survival (TBC from workshop)
-    \item Peritoneal dialysis (PD) infections (peritonitis, exit site infection, tunnel infection)
-    \item Physical activity (actigraph accelerometers/fitbit TBC)
-    \item Sleep (actigraph accelerometer/fibit TBC)
+  \item Vascular access function (rate of intervention)
+  \item Technique survival (TBC from workshop)
+  \item Peritoneal dialysis (PD) infections (peritonitis, exit site infection, tunnel infection)
+  \item Physical activity (actigraph accelerometers/fitbit TBC)
+  \item Sleep (actigraph accelerometer/fibit TBC)
 \end{itemize}
 
 \textbf{Exercise-physiologist assessed outcomes:}
 \begin{itemize}
-    \item Neuromuscular fitness:
-    \begin{itemize}
-    \item hand grip strength (maximal torque)
-    \item timed up-and-go (power)
-    \item 30s sit-to-stand
-    \item modified wall push-up test (strength endurance)
-    \item arm curl test arm curl test
-    \item Tinetti balance instrument (balance)
-    \end{itemize}
+  \item Neuromuscular fitness:
+        \begin{itemize}
+          \item hand grip strength (maximal torque)
+          \item timed up-and-go (power)
+          \item 30s sit-to-stand
+          \item modified wall push-up test (strength endurance)
+          \item arm curl test arm curl test
+          \item Tinetti balance instrument (balance)
+        \end{itemize}
 
-    \item Exercise capacity:
-    \begin{itemize}
-        \item six-minute walk test
-        \item normal and maximal walking speed (sub-maximal exercise capacity)
-    \end{itemize}
+  \item Exercise capacity:
+        \begin{itemize}
+          \item six-minute walk test
+          \item normal and maximal walking speed (sub-maximal exercise capacity)
+        \end{itemize}
 
-    \item Body composition:
-    \begin{itemize}
-        \item height and weight (body mass index)
-        \item waist circumference
-    \end{itemize}
+  \item Body composition:
+        \begin{itemize}
+          \item height and weight (body mass index)
+          \item waist circumference
+        \end{itemize}
 
-    \item Frailty:
-    \begin{itemize}
-        \item Fried phenotype\footnote{is this a single composite measure?} (weight loss, exhaustion, low physical activity, slowness, weakness)
-    \end{itemize}
+  \item Frailty:
+        \begin{itemize}
+          \item Fried phenotype\footnote{is this a single composite measure?} (weight loss, exhaustion, low physical activity, slowness, weakness)
+        \end{itemize}
 
-    \item Adherence (self-report, pre/post exercise study-specific questionnaire)
+  \item Adherence (self-report, pre/post exercise study-specific questionnaire)
 
-    \item Cognitive function:
-    \begin{itemize}
-        \item executive and processing speed
-    \end{itemize}
+  \item Cognitive function:
+        \begin{itemize}
+          \item executive and processing speed
+        \end{itemize}
 
 \end{itemize}
 
-\textbf{Patient-reported outcomes:}
-\begin{itemize}
-    \item Quality of Life (EQ-5D-5L)
-    \item Fatigue (SONG-HD Fatigue measure)
-    \item Fatigue (Pittsburgh Fatigability Scale)
-    \item Life participation (PROMIS Ability to Participate in Social Roles and Activities)
-    \item Mood (Hospital Anxiety and Depression Scale)
-\end{itemize}
+
 
 \textbf{Economic Outcomes:}
 \begin{itemize}
-    \item Health-care resource use
-    \item Cost-effectiveness
+  \item Health-care resource use
+  \item Cost-effectiveness
 \end{itemize}
 
 \hypertarget{safety-outcomes}{%
-\subsection{Safety Outcomes}\label{safety-outcomes}}
+  \subsection{Safety Outcomes}\label{safety-outcomes}}
 
 The safety outcomes are as follows
 
 \begin{itemize}
-    \item Mortality (hospital administrative data)
-    \item Hospitalisation (hospital administrative data)
-    \item Cardiovascular event (MI, sudden cardiac death via hospital administrative data)
-    \item Nausea, vomiting, diarrhoea, muscle/joint/bone problems, injury, falls (exercise physiologist)
+  \item Mortality (hospital administrative data)
+  \item Hospitalisation (hospital administrative data)
+  \item Cardiovascular event (MI, sudden cardiac death via hospital administrative data)
+  \item Nausea, vomiting, diarrhoea, muscle/joint/bone problems, injury, falls (exercise physiologist)
 \end{itemize}
 
 \hypertarget{covariates}{%
-\subsection{Covariates}\label{covariates}}
+  \subsection{Covariates}\label{covariates}}
 
 The primary model will include terms to characterise time trends, a time by treatment interaction and varying terms for participant and therapist clustering.
 
 TBD - additional variables will be included to account for prognostic factors at baseline?
 
+\hypertarget{subgroups}{%
+  \subsection{Subgroups}\label{subgroups}}
+
 \clearpage
 
 \hypertarget{statistical-modelling}{%
-\section{Statistical Modelling}\label{statistical-modelling}}
+  \section{Statistical Modelling}\label{statistical-modelling}}
 
-In this section we outline considerations relevant to the statistical modelling approached used in MFIT.
+In this section we outline considerations relevant to the statistical modelling approached used in M-FIT.
 These include a discussion on the analysis population, model specifications, subgroup, secondary and other analyses.
 
 All inference will be made within a Bayesian framework; general principles include:
 
 \begin{itemize}
-\item application of intention-to-treat
-\item accompanying descriptive statistics
-\item number of participants used in each analysis and reasons for exclusions
-\item comparisons across treatment groups with medians and 95\% highest density intervals
-\item accompanying assumptions for priors
-\item evaluation of goodness-of-fit
+  \item application of intention-to-treat
+  \item accompanying descriptive statistics
+  \item number of participants used in each analysis and reasons for exclusions
+  \item comparisons across treatment groups with medians and 95\% highest density intervals
+  \item accompanying assumptions for priors
+  \item evaluation of goodness-of-fit
 \end{itemize}
 
 \hypertarget{analysis-population}{%
-\subsection{Analysis Population}\label{analysis-population}}
+  \subsection{Analysis Population}\label{analysis-population}}
 
 The target population relevant for the primary analysis is formed from Australian residents meeting the inclusion criteria, which nominally aligns to adults with end-stage kidney disease on  maintenance haemodialysis or peritoneal dialysis.
 This population has significant potential for intercurrent events, but they are also a captive audience due to being critically dependent on dialysis for survival.
@@ -417,35 +623,31 @@ Our primary analysis will include all participants randomised to an intervention
 That is, we will adopt an intention-to-treat (ITT) principle for the analyses with all randomised participants contributing to the analysis such that:
 
 \begin{itemize}
-\tightlist
-\item
-  patients will be analysed in the group they were allocated to
-\item
-  patients that do not receive (either partially or fully) the intervention will be retained
-\item
-  protocol deviations will not result in automatic exclusion
-\item
-  patients who die before end of the study  will be included in the analysis population until their time of death
+  \tightlist
+  \item
+        patients will be analysed in the group they were allocated to
+  \item
+        patients that do not receive (either partially or fully) the intervention will be retained
+  \item
+        protocol deviations will not result in automatic exclusion
+  \item
+        patients who die before end of the study  will be included in the analysis population until their time of death
 \end{itemize}
 
 We note that ITT tends to produce conservative estimates of the treatment effect and introduces heterogeneity in the presence of non-adherence.
 
 \hypertarget{descriptive-statistics}{%
-\subsection{Descriptive statistics}\label{descriptive-statistics}}
+  \subsection{Descriptive statistics}\label{descriptive-statistics}}
 
-Descriptive statistics will be calculated and presented by group (and totals) for demographics at baseline.
-
-TBD - what characteristics to be included?
+Descriptive statistics will be calculated and presented by intervention arm and in aggregate for all baseline variables.
+Categorical variables will be summarised by counts and proportions.
+Continuous variables will be summarised by means and standard deviations or medians and interquartile ranges.
 
 \hypertarget{primary-model}{%
-\subsection{Primary Model}\label{primary-model}}
+  \subsection{Primary Model}\label{primary-model}}
 
-\hypertarget{background}{%
-\subsubsection{Background}\label{background}}
-
-The primary analysis will use a longitudinal model for baseline-adjusted participant fatigue as measured by FACIT-Fatigue over the 12 weeks follow up.
-All adaptations will be based on the results at 12 weeks follow up, but we will also report the results at the other followup times.
-This means that we might see scenarios where a treatment is superior at the 4 weeks follow up, but not at the 8 nor 12 weeks follow up.
+The primary analysis will use a longitudinal model for participant fatigue as measured by FACIT-Fatigue over the 12 weeks follow up.
+All adaptations will be based on the relative intervention effects at 12 weeks post-randomisation, but we will also report the results at the other followup times.
 
 While the FACIT-Fatigue score is ordinal in the range of 0-52, the primary analysis assumes a continuous response.
 This approach simplifies both the implementation and interpretation, but it also makes the assumption that the numerical distance between each set of subsequent categories is equal and that the numeric scale really does underlie the ordered classification.
@@ -455,27 +657,27 @@ We will determine treatment comparative effectiveness based on the posterior dis
 The interim analyses will use the same model specification as the final analysis; also see \nameref{trial-adaptations-and-statistical-decisions}.
 
 \hypertarget{model-specification}{%
-\subsubsection{Model specification}\label{model-specification}}
+  \subsubsection{Model specification}\label{model-specification}}
 
 Denoting $y_{i}$ as the $i^{th}$ standardised (centered at zero with sd of one) FACIT-Fatigue score (a 13-item scale where scores range from 0 to 52, with 0 being the worst and 52 the best indicating no fatigue), we will model a baseline-adjusted score as\footnote{Are other prognostic variables to be included?}
 
 \[
-\begin{aligned}
-y_{i} &\sim \mathcal{N}(\mu_{i}, \sigma_e^2) \\
-\mu_i &= \begin{cases}
-      \alpha + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]} & \mathsf{if \ at \ baseline} \\
-      \alpha + \beta_{\mathsf{time}[i]} + \gamma_{\mathsf{time}[i],\mathsf{trt}[i]} + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]}  & \mathsf{otherwise}
+  \begin{aligned}
+    y_{i} & \sim \mathcal{N}(\mu_{i}, \sigma_e^2) \\
+    \mu_i & = \begin{cases}
+      \alpha + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]}                                                                        & \mathsf{if \ at \ baseline} \\
+      \alpha + \beta_{\mathsf{time}[i]} + \gamma_{\mathsf{time}[i],\mathsf{trt}[i]} + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]} & \mathsf{otherwise}
     \end{cases}
-\end{aligned}
+  \end{aligned}
 \]
 
 with priors and constraints (sum-to-zero within each time point for identifiability)
 
 \begin{gather*}
-\alpha \sim \mathcal{N}(0, 10^2), \quad \beta \sim \mathcal{N}(0, 1), \quad \gamma \sim \mathcal{N}(0, 1) \\
-\sum_j \gamma_{k,j} = 0 \quad \forall k  \\
-\sigma_e^2 \sim \text{IG}(0.01, 0.01), \quad \sigma_\nu^2 \sim \text{IG}(0.01, 0.01), \quad \sigma_\upsilon^2 \sim \text{IG}(0.01, 0.01) \\
-\nu_{\mathsf{id}[i]} \sim \mathcal{N}(0, \sigma_\nu^2) \quad \upsilon_{\mathsf{therapist}[i]} \sim \mathcal{N}(0, \sigma_\upsilon^2) \\
+  \alpha \sim \mathcal{N}(0, 10^2), \quad \beta \sim \mathcal{N}(0, 1), \quad \gamma \sim \mathcal{N}(0, 1) \\
+  \sum_j \gamma_{k,j} = 0 \quad \forall k  \\
+  \sigma_e^2 \sim \text{IG}(0.01, 0.01), \quad \sigma_\nu^2 \sim \text{IG}(0.01, 0.01), \quad \sigma_\upsilon^2 \sim \text{IG}(0.01, 0.01) \\
+  \nu_{\mathsf{id}[i]} \sim \mathcal{N}(0, \sigma_\nu^2) \quad \upsilon_{\mathsf{therapist}[i]} \sim \mathcal{N}(0, \sigma_\upsilon^2) \\
 \end{gather*}
 
 
@@ -486,26 +688,26 @@ The random effects $\nu_{\mathsf{id}[i]}$ and $\upsilon_{\mathsf{therapist}[i]}$
 The primary quantity of interest is taken to be the relative values of $\gamma_{3,\mathsf{trt}}$ for $\mathsf{trt} = 1, 2, 3, 4$ where the 3 prefix is the index for the 12 week follow up.
 
 \hypertarget{subgroup-analyses}{%
-\subsection{Subgroup Analyses}\label{subgroup-analyses}}
+  \subsection{Subgroup Analyses}\label{subgroup-analyses}}
 
 Subgroup analyses for the primary model will examine heterogeneity in the FACIT-Fatigue score at 12 weeks post-randomisation arising from variation in baseline treatment arm preference (including control option).
 Participants state their preference at baseline and are categorised according to:
 
 \begin{enumerate}
-    \item indifferent / no preference / did not state a preference
-    \item preference for a particular exercise:
-    \begin{enumerate}
-        \item preference for walking
-        \item preference for resistance and aerobic
-        \item preference for resistance-only
-    \end{enumerate}
+  \item indifferent / no preference / did not state a preference
+  \item preference for a particular exercise:
+        \begin{enumerate}
+          \item preference for walking
+          \item preference for resistance and aerobic
+          \item preference for resistance-only
+        \end{enumerate}
 \end{enumerate}
 
 Participants who have a preference may receive that intervention by chance when randomised.
 This defines an additional two groups:
 \begin{enumerate}
-    \item received their preference
-    \item did not receive their preference
+  \item received their preference
+  \item did not receive their preference
 \end{enumerate}
 
 A first subgroup analysis allows an expanded model where receiving the preferred treatment may alter the effect of that treatment.
@@ -513,13 +715,13 @@ This model incorporate a time by preference interaction and a time by treatment 
 The expanded model is then
 
 \[
-\begin{aligned}
-y_{i} &\sim \mathcal{N}(\mu_{i}, \sigma_e^2) \\
-\mu_i &= \begin{cases}
-      \alpha + \phi_{\mathsf{pref}[i]} + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]} & \mathsf{if \ at \ baseline} \\
-      \alpha + \phi_{\mathsf{pref}[i]} + \beta_{\mathsf{pref}[i], \mathsf{time}[i]} + \gamma_{\mathsf{pref}[i], \mathsf{time}[i],\mathsf{trt}[i]} + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]},  & \mathsf{otherwise}
+  \begin{aligned}
+    y_{i} & \sim \mathcal{N}(\mu_{i}, \sigma_e^2) \\
+    \mu_i & = \begin{cases}
+      \alpha + \phi_{\mathsf{pref}[i]} + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]}                                                                                                             & \mathsf{if \ at \ baseline} \\
+      \alpha + \phi_{\mathsf{pref}[i]} + \beta_{\mathsf{pref}[i], \mathsf{time}[i]} + \gamma_{\mathsf{pref}[i], \mathsf{time}[i],\mathsf{trt}[i]} + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]}, & \mathsf{otherwise}
     \end{cases}
-\end{aligned}
+  \end{aligned}
 \]
 
 with analogous priors and subject to sum-to-zero identifiability constraints.
@@ -528,21 +730,21 @@ TBD - James - add in the additional subgroup analyses that you think are worth e
 - full selection/preference/treatment model
 
 \hypertarget{secondary-analyses}{%
-\subsection{Secondary Analyses}\label{secondary-analyses}}
+  \subsection{Secondary Analyses}\label{secondary-analyses}}
 
 The secondary outcomes are a mix of continuous, discrete and categorical variables, some collected at multiple timepoints over the duration of the study.
 The following provides brief specifications for the analyses of each of the secondary outcomes.
 The secondary outcomes are divided into groups for:
 
 \begin{itemize}
-\item \nameref{clinical-outcomes}
-\item \nameref{patient-reported-outcomes}
-\item \nameref{exercise-professional-assessed-outcomes}
-\item \nameref{economic-outcomes}
+  \item \nameref{clinical-outcomes}
+  \item \nameref{patient-reported-outcomes}
+  \item \nameref{exercise-professional-assessed-outcomes}
+  \item \nameref{economic-outcomes}
 \end{itemize}
 
 \hypertarget{clinical-outcomes}{%
-\subsubsection{Clinical Outcomes}\label{clinical-outcomes}}
+  \subsubsection{Clinical Outcomes}\label{clinical-outcomes}}
 
 Standardised Outcomes in Nephrology (SONG) core outcomes follow.
 
@@ -579,7 +781,7 @@ We will analyse sleep duration with a log-normal or gamma mixed effects model wi
 
 
 \hypertarget{exercise-professional-assessed-outcomes}{%
-\subsubsection{Exercise professional assessed outcomes}\label{exercise-professional-assessed-outcomes}}
+  \subsubsection{Exercise professional assessed outcomes}\label{exercise-professional-assessed-outcomes}}
 
 
 
@@ -589,11 +791,11 @@ The aim is to use several supervised tests to compare baseline adjusted strength
 The tests are:
 
 \begin{itemize}
-\item hand grip strength test (kg)
-\item timed up and go (seconds)
-\item 30 second sit to stand (frequency)
-\item modified wall push-up test (frequency)
-\item arm curl test (frequency)
+  \item hand grip strength test (kg)
+  \item timed up and go (seconds)
+  \item 30 second sit to stand (frequency)
+  \item modified wall push-up test (frequency)
+  \item arm curl test (frequency)
 
 \end{itemize}
 
@@ -645,18 +847,12 @@ TBD - unclear as to what is required.
 
 
 \hypertarget{patient-reported-outcomes}{%
-\subsubsection{Patient reported outcomes}\label{patient-reported-outcomes}}
+  \subsubsection{Patient reported outcomes}\label{patient-reported-outcomes}}
 
 
 \textbf{Quality of Life}
 
 The aim is to use the EQ-5D-5L score to compare baseline adjusted quality of life at 4, 8, 12 and 36 weeks by intervention.
-EQ-5D-5L is a standardised measure of health-related quality of life that comprises five dimensions: mobility, self-care, usual activities, pain and discomfort, and anxiety and depression.
-The five dimension each have five response levels of severity giving health scores ranging from 11111 (full health) to 55555 (worst health), equating to $5^5 = 3125$ potential health states.
-For analysis, the responses are routinely converted into an index representing the utility of the health state.
-The conversion, while not recommended by the EuroQol Group\footnote{EQ visual analog scale (VAS) is what EuroQol recommends for statistical analyses.}, proceeds by applying a societal preference function which generates scores anchored at 0 for death and 1 for perfect health and represent a societal valuation of health-related quality-of-life.
-The conversion only works for complete data.
-See \url{https://cran.r-project.org/web/packages/eq5d/vignettes/eq5d.html} and \url{https://link.springer.com/book/10.1007\%2F978-3-030-47622-9} for more detail.
 
 We will analyse the EQ-5D-5L score using a linear (or beta) mixed effects model with fixed terms for treatment, timepoint, random intercept for participant repeat measures and random intercept for exercise physiologist.
 
@@ -668,15 +864,15 @@ TBD - intention for weights to convert into index for utility? Preferable to jus
 There are two aims for the secondary analysis on SONG-HD Fatigue:
 
 \begin{enumerate}
-    \item compare baseline adjusted fatigue at 4, 8, 12 and 36 weeks by intervention (preference are not part of this analysis) in patients receiving dialysis
-    \item validation of the SONG-HD Fatigue score
+  \item compare baseline adjusted fatigue at 4, 8, 12 and 36 weeks by intervention (preference are not part of this analysis) in patients receiving dialysis
+  \item validation of the SONG-HD Fatigue score
 \end{enumerate}
 
 The SONG-HD Fatigue score comprises three items that assess
 \begin{enumerate}
-    \item the effect of fatigue on life participation
-    \item tiredness
-    \item level of energy
+  \item the effect of fatigue on life participation
+  \item tiredness
+  \item level of energy
 \end{enumerate}
 
 These are measured on a four-point Likert scale and indicate severity, ranging from zero (not at all) to three (severely).
@@ -712,7 +908,7 @@ We will analyse the HADS score using separate linear mixed effects models for an
 
 
 \hypertarget{economic-outcomes}{%
-\subsubsection{Economic outcomes}\label{economic-outcomes}}
+  \subsubsection{Economic outcomes}\label{economic-outcomes}}
 
 \textbf{Health-care utilisation}
 
@@ -729,13 +925,13 @@ TBD
 
 
 \hypertarget{qualitative-analyses}{%
-\subsection{Qualitative Analyses}\label{qualitative-analyses}}
+  \subsection{Qualitative Analyses}\label{qualitative-analyses}}
 
 Evaluation of the impact, fidelity, facilitators, and barriers of implementing the exercise program in patients receiving dialysis.
 These analyses are beyond the scope of the SAP.
 
 \hypertarget{missing-data}{%
-\subsection{Missing Data}\label{missing-data}}
+  \subsection{Missing Data}\label{missing-data}}
 
 Dialysis patients are generally not lost to follow up due to the nature of their treatment protocols.
 Withdrawal of consent is also typically low in this population (around 5\%).
@@ -745,7 +941,7 @@ Under the missing completely at random (MCAR) and missing at random (MAR) assump
 However, under missing not at random (MNAR) the probability of missingness depends on the (unobserved) missing values.
 When missingness is due to MNAR, there is both a loss in precision and bias and therefore sensitivity analyses are required.
 MAR is commonly assumed, although MNAR is arguably more applicable for most settings.
-For MFIT, there is potential for MNAR as differential LTFU could be observed across treatment groups.
+For M-FIT, there is potential for MNAR as differential LTFU could be observed across treatment groups.
 
 Patterns of missingness for the outcome and covariates will be reported by time and group.
 As missingness is expected to be relatively low, we will simply undertake analyses based on all available data.
@@ -753,34 +949,34 @@ If concerns arise regarding missingness (or a sensitivity analysis is requested)
 For continuous variables best-worst-case will use group means plus/minus two standard deviations.
 
 \hypertarget{sensitivity-analyses}{%
-\subsection{Sensitivity Analyses}\label{sensitivity-analyses}}
+  \subsection{Sensitivity Analyses}\label{sensitivity-analyses}}
 
 TBD - can people add suggestions here?
 
 Explore more general correlation structures for primary outcome.
 E.g. instead of random intercept (positive compound symmetry) could assume unstructured, or a more realistic correlation such as model with heterogeneity by time point and serial correlation between time points, say AR(1). So, drop random intercept for ID and just specify
 $$
-y_i \sim \mathcal{N}(\mu_i, \Sigma),\quad
-\Sigma = \begin{pmatrix}
-\sigma_{1}^2 & \sigma_{12} & \sigma_{13} & \sigma_{14} \\
-\sigma_{12} & \sigma_2^2 & \sigma_{23} & \sigma_{24} \\
-\sigma_{13} & \sigma_{23} & \sigma_3^2 & \sigma_{34} \\
-\sigma_{14} & \sigma_{24} & \sigma_{34} & \sigma_{4}^2
-\end{pmatrix}
+  y_i \sim \mathcal{N}(\mu_i, \Sigma),\quad
+  \Sigma = \begin{pmatrix}
+    \sigma_{1}^2 & \sigma_{12} & \sigma_{13} & \sigma_{14}  \\
+    \sigma_{12}  & \sigma_2^2  & \sigma_{23} & \sigma_{24}  \\
+    \sigma_{13}  & \sigma_{23} & \sigma_3^2  & \sigma_{34}  \\
+    \sigma_{14}  & \sigma_{24} & \sigma_{34} & \sigma_{4}^2
+  \end{pmatrix}
 $$
 directly for whatever assumed co-variance model, where $y_i$ is vector of responses of participant $i$ at each time point with mean $\mu_i$ as determined by the primary model. Could assess model comparison/fit compared to primary etc.
 
 \hypertarget{safety-analyses}{%
-\subsection{Safety Analyses}\label{safety-analyses}}
+  \subsection{Safety Analyses}\label{safety-analyses}}
 
 The following safety data is of interest and recorded at 4, 8, 12 and 36 weeks (the Pre-exercise safety questionnaire is also collected at baseline).
 
 \begin{itemize}
-\item Death
-\item Cardiac events
-\item Falls
-\item Exercise related injuries
-\item Pre-exercise safety questionnaire
+  \item Death
+  \item Cardiac events
+  \item Falls
+  \item Exercise related injuries
+  \item Pre-exercise safety questionnaire
 \end{itemize}
 
 Descriptive statistics of each safety variable will be tabulated in aggregate and by group and followup.
@@ -788,7 +984,7 @@ Descriptive statistics of each safety variable will be tabulated in aggregate an
 \clearpage
 
 \hypertarget{statistical-quantities}{%
-\section{Statistical Quantities}\label{statistical-quantities}}
+  \section{Statistical Quantities}\label{statistical-quantities}}
 
 Statistical quantities obtained from the model parameters will be used to evaluate treatment effectiveness and direct the progression and adaptations for the trial.
 
@@ -796,29 +992,29 @@ In section \ref{primary-model} we introduced $\gamma_{\mathsf{time[i], trt[i]}}$
 Dropping the time indexing for notational brevity, at each analysis we compute the probability that arm $k$ is superior to all others $j$ by evaluating
 
 \[
-\begin{aligned}
-\pi_{k} &= \mathsf{Pr}[\gamma_{k} - \max_{j\ne k} \gamma_j >0|\mathsf{data}] \quad \mathsf{for \  active} \quad k,j \in \{1, 2, 3, 4\}
-\end{aligned}
+  \begin{aligned}
+    \pi_{k} & = \mathsf{Pr}[\gamma_{k} - \max_{j\ne k} \gamma_j >0|\mathsf{data}] \quad \mathsf{for \  active} \quad k,j \in \{1, 2, 3, 4\}
+  \end{aligned}
 \]
 
 which we will informally refer to as \textit{``p-best''} amongst the active arms.
 Empirically, this can be calculated as the proportion of times that the $b^{th}$ posterior sample for $\widehat{\gamma}_k$ is the greatest across the active arms.
 
 \hypertarget{treatment-superiority}{%
-\subsection{Treatment superiority}\label{treatment-superiority}}
+  \subsection{Treatment superiority}\label{treatment-superiority}}
 
 Superiority of treatment arm $k$ relative to all other treatment arms is defined to occur when there is a very high probability that arm $k$ is the best.
 Specifically, we define an arm to be superior when
 \[
-\begin{aligned}
-\pi_{k} > \zeta_{\mathsf{sup}} \quad \mathsf{with} \quad \zeta_{\mathsf{sup}} = 0.98
-\end{aligned}
+  \begin{aligned}
+    \pi_{k} > \zeta_{\mathsf{sup}} \quad \mathsf{with} \quad \zeta_{\mathsf{sup}} = 0.98
+  \end{aligned}
 \]
 
 where $\zeta_{\mathsf{sup}} = 0.98$ is the superiority decision threshold, identified through trial simulation.
 
 \hypertarget{treatment-inferiority}{%
-\subsection{Treatment inferiority}\label{treatment-inferiority}}
+  \subsection{Treatment inferiority}\label{treatment-inferiority}}
 
 Inferiority represents the situation where arm $k$ has a very low probability of being superior.
 However, note that the existence of a superior arm does not imply that all others are inferior.
@@ -826,24 +1022,24 @@ Inferiority of treatment arm $k$ is defined to occur when there is a very low pr
 Specifically, we define an arm to be inferior when
 
 \[
-\begin{aligned}
-\pi_{k} < (1 - \zeta_{\mathsf{sup}}) / (|\mathcal{A}_m| - 1)
-\end{aligned}
+  \begin{aligned}
+    \pi_{k} < (1 - \zeta_{\mathsf{sup}}) / (|\mathcal{A}_m| - 1)
+  \end{aligned}
 \]
 
 where $|\mathcal{A}_m|$ is the number of currently active arms, i.e. we only include the active arms in the calculation.
 Under this decision threshold, it is the case that when all arms bar one are inferior, the remaining arm must be superior.
 
 \hypertarget{treatment-effectiveness}{%
-\subsection{Treatment effectiveness}\label{treatment-effectiveness}}
+  \subsection{Treatment effectiveness}\label{treatment-effectiveness}}
 
 The pseudo control arm is used as a referent from which the effectiveness of the \textit{active} therapies can be evaluated.
 Specifically, we define a therapy to be effective relative to the pseudo-control when
 
 \[
-\begin{aligned}
-\pi_{k,1} &= \mathsf{Pr}[\gamma_{k} - \gamma_{1} >0|\mathsf{data}] > \epsilon
-\end{aligned}
+  \begin{aligned}
+    \pi_{k,1} & = \mathsf{Pr}[\gamma_{k} - \gamma_{1} >0|\mathsf{data}] > \epsilon
+  \end{aligned}
 \]
 
 where $\pi_{k,1}$ denotes a comparison of arms $k = 2, 3, 4$ with arm $1$ that we assume indexes the control arm.
@@ -851,7 +1047,7 @@ where $\pi_{k,1}$ denotes a comparison of arms $k = 2, 3, 4$ with arm $1$ that w
 \clearpage
 
 \hypertarget{trial-adaptations-and-statistical-decisions}{%
-\section{Trial Adaptations and Statistical Decisions}\label{trial-adaptations-and-statistical-decisions}}
+  \section{Trial Adaptations and Statistical Decisions}\label{trial-adaptations-and-statistical-decisions}}
 
 As the trial proceeds, the accrued information is used to make decisions on the progression of the trial based on pre-specified adaptations and decision thresholds.
 For example, treatment arms may show evidence of being inferior relative to all others and therefore enrollment would cease for these arms.
@@ -861,7 +1057,7 @@ Pending independent oversight from a DSMC, these statistical decisions will info
 The following sections outline these adaptations.
 
 \hypertarget{sequential-analyses}{%
-\subsection{Sequential Analyses}\label{sequential-analyses}}
+  \subsection{Sequential Analyses}\label{sequential-analyses}}
 
 We will run regular interim analyses with the first one triggered when \(n=100\) participants have reached the 12 week primary endpoint (regardless of whether the outcome was observed or not).
 After the first analysis, interim analyses will occur for every additional \(100\) participants enrolled up to a maximum sample size of \(400\).
@@ -873,29 +1069,29 @@ That is to say that some of the participants will only contribute their baseline
 Note that given that the design uses response adaptive randomisation, we made the decision not to incorporate predictive probabilities into the analyses as it would be prohibitively complicated to implement given the available resources.
 
 \hypertarget{stopping-rules}{%
-\subsection{Stopping rules}\label{stopping-rules}}
+  \subsection{Stopping rules}\label{stopping-rules}}
 
 Enrollment into the trial will be stopped prior to the maximum sample size if:
 
 \begin{itemize}
-\item one of the therapies is declared superior at the nominated decision threshold
-\item all arms bar one have been declared inferior at the nominated decision threshold
+  \item one of the therapies is declared superior at the nominated decision threshold
+  \item all arms bar one have been declared inferior at the nominated decision threshold
 \end{itemize}
 
 Additionally, the trial may be stopped early due to safety concerns.
 Otherwise the trial will continue until the maximum sample size.
 
 \hypertarget{response-adaptive-randomisation}{%
-\subsection{Response-Adaptive Randomisation}\label{response-adaptive-randomisation}}
+  \subsection{Response-Adaptive Randomisation}\label{response-adaptive-randomisation}}
 
 The response-adaptive randomisation methodology allocates treatment arms with probability proportional to the product of the probability an arm is the best therapy (in terms of reducing fatigue) and the variance of the posterior change in fatigue divided by the sample size on that arm.
 Note that the response adaptive randomisation is based on the comparison amongst the active arms at the week 12 follow up.
 Specifically, we will compute allocation probabilities according to
 
 \[
-\begin{aligned}
-r_{k} \propto \sqrt{ \frac{\pi_k \mathsf{V}[\gamma_k | \mathsf{data} ]}{ n_k + 1}  }
-\end{aligned}
+  \begin{aligned}
+    r_{k} \propto \sqrt{ \frac{\pi_k \mathsf{V}[\gamma_k | \mathsf{data} ]}{ n_k + 1}  }
+  \end{aligned}
 \]
 
 which would then be renormalised across all active $k$.
@@ -903,7 +1099,7 @@ Arms that have previously been declared inferior will have an allocation probabi
 
 
 \hypertarget{model-deviations}{%
-\subsection{Model Deviations}\label{model-deviations}}
+  \subsection{Model Deviations}\label{model-deviations}}
 
 The primary analysis model will be assessed for adequacy.
 Additional models (either simpler or more complex) may be investigated as part of checks of sensitivity, stability, and model fit.
@@ -912,89 +1108,79 @@ If any issues or concerns arise, all changes or updates to the specified primary
 \clearpage
 
 \hypertarget{interim-analyses-and-trial-reporting}{%
-\section{Interim Analyses and Trial Reporting}\label{interim-analyses-and-trial-reporting}}
+  \section{Interim Analyses and Trial Reporting}\label{interim-analyses-and-trial-reporting}}
 
 A DSMC report template can be found at \url{https://github.com/adaptivehealthintelligence/ahitemplates}.
 To use the templates:
 
 \begin{itemize}
-\item clone the github repository
-\item install the ahitemplate package via \texttt{R CMD INSTALL ahitemplate} (or equivalent)
-\item through RStudio create a new Rmarkdown file from templates selecting \textit{AHI DMSB Report}
+  \item clone the github repository
+  \item install the ahitemplate package via \texttt{R CMD INSTALL ahitemplate} (or equivalent)
+  \item through RStudio create a new Rmarkdown file from templates selecting \textit{AHI DMSB Report}
 \end{itemize}
 
 Alternatively, use whatever documentation software preferred and include content for the following sections:
 
 \begin{itemize}
-\tightlist
-\item
-  Executive summary
-\item
-  Protocol synopsis
-\item
-  Report overview
-\item
-  Suggested communication to the study team investigators
-\item
-  Enrollment status including rates of enrollment
-\item
-  Participant status
-\item
-  Descriptive statistics for baseline demographic stratified by treatment arm and follow up time
-\item
-  Descriptive statistics of adherence to treatment protocol, protocol violations and dropouts
-\item
-  Summary of baseline health status comorbidities
-\item
-  Safety data
-\item
-  Protocol deviations
-\item
-  Results from primary analysis
-\item
-  Appendix: As required
+  \tightlist
+  \item
+        Executive summary
+  \item
+        Protocol synopsis
+  \item
+        Report overview
+  \item
+        Suggested communication to the study team investigators
+  \item
+        Enrollment status including rates of enrollment
+  \item
+        Participant status
+  \item
+        Descriptive statistics for baseline demographic stratified by treatment arm and follow up time
+  \item
+        Descriptive statistics of adherence to treatment protocol, protocol violations and dropouts
+  \item
+        Summary of baseline health status comorbidities
+  \item
+        Safety data
+  \item
+        Protocol deviations
+  \item
+        Results from primary analysis
+  \item
+        Appendix: As required
 \end{itemize}
 
 
 \hypertarget{platform-conclusions}{%
-\subsection{Platform Conclusions}\label{platform-conclusions}}
+  \subsection{Platform Conclusions}\label{platform-conclusions}}
 
 The DSMC will be notified when any statistical trigger occurs and is collectively responsible for deciding whether to recommend public announcements to the TSC.
 
 \hypertarget{trial-reporting}{%
-\subsection{Trial Reporting}\label{trial-reporting}}
+  \subsection{Trial Reporting}\label{trial-reporting}}
 
 Communication of trial outcomes will occur under the following conditions:
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  the maximum sample size has been reached
-\item
-  all arms are deemed inferior to standard of care
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+        the maximum sample size has been reached
+  \item
+        all arms are deemed inferior to standard of care
 \end{enumerate}
 
 \textbf{IMPORTANT}: Other than the routine interim analyses, no reporting, nor other analyses will occur prior to the above criteria being met.
 Exceptions may be made to this rule:
 
 \begin{itemize}
-\item to support necessary applications for funding
-\item based on requests from the DSMC for additional information
+  \item to support necessary applications for funding
+  \item based on requests from the DSMC for additional information
 \end{itemize}
 
 \clearpage
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
-\addcontentsline{toc}{section}{References}
-
-
-%PLACEHOLDER
-
-%\hypertarget{refs}{}
-%\leavevmode\hypertarget{ref-Ginsburg2020}{}%
-%Ginsburg, Amy‐Sarah. 2020. ``Amoxicillin for 3 or 5 Days for Chest-Indrawing Pneumonia in Malawian Children.'' \emph{The New England Journal of Medicine} 383 (1). \url{DOI:10.1056/NEJMoa1912400}.
-
+\printbibliography[heading=bibintoc]
 
 \end{document}
