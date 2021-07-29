@@ -101,7 +101,7 @@
     urlcolor=blue,
 }
 \urlstyle{same}
-\usepackage[backend=biber,style=ieee]{biblatex} %Imports biblatex package
+\usepackage[backend=biber,style=nature]{biblatex} %Imports biblatex package
 \addbibresource{main.bib} %Import the bibliography file
 
 
@@ -174,7 +174,7 @@ This statistical analysis plan (SAP) outlinse the data and procedures for analys
 
 The following documents were reviewed when preparing this SAP:
 
-- M-FIT Study Protocol version 0.9.6
+- M-FIT Study Protocol version 0.9.6, 17 June 2021
 
 \clearpage
 
@@ -187,20 +187,25 @@ The following documents were reviewed when preparing this SAP:
   \centering
   \begin{tabular}{p{0.2\textwidth}p{0.7\textwidth}}
     \toprule
-    Abbreviation  & Definition                                                                                      \\
+    Abbreviation  & Definition                                                                                                       \\
     \midrule
-    AKTN          & Australasian Kidney Trials Network                                                              \\
-    CKD           & Chronic Kidney Disease                                                                          \\
-    FACIT-Fatigue & Functional Assessment of Chronic Illness Therapy – Fatigue                                      \\
-    HADS          & Hospital Anxiety and Depression Scale                                                           \\
-    HD            & Haemodialysis                                                                                   \\
-    PD            & Peritoneal dialysis                                                                             \\
-    M-FIT         & Structured exercise program to reduce fatigue in patients receiving dialysis: an adaptive trial \\
-    PFS           & Pittsburgh Fatigability Scale                                                                   \\
-    QALY          & Quality of life years                                                                           \\
-    SAP           & Statistical analysis plan                                                                       \\
-    SONG          & Standardised Outcomes In Nephrology                                                             \\
-    SONG-HD       & Standardised Outcomes In Nephrology - Haemodialysis                                             \\
+    30STS         & 30-second sit-to-stand test                                                                                      \\
+    AKTN          & Australasian Kidney Trials Network                                                                               \\
+    CKD           & Chronic Kidney Disease                                                                                           \\
+    FACIT-Fatigue & Functional Assessment of Chronic Illness Therapy – Fatigue                                                       \\
+    HADS          & Hospital Anxiety and Depression Scale                                                                            \\
+    HD            & Haemodialysis                                                                                                    \\
+    PD            & Peritoneal dialysis                                                                                              \\
+    M-FIT         & Structured exercise program to reduce fatigue in patients receiving dialysis: an adaptive trial                  \\
+    PFS           & Pittsburgh Fatigability Scale                                                                                    \\
+    POMA          & Performance Oriented Mobility Assessment                                                                         \\
+    PROMIS        & Patient-Reported Outcomes Measurement Information System                                                         \\
+    PROMIS-APSRA  & Patient-Reported Outcomes Measurement Information System - Ability to Participate in Social Roles and Activities \\
+    QALY          & Quality of life years                                                                                            \\
+    SAP           & Statistical analysis plan                                                                                        \\
+    SONG          & Standardised Outcomes In Nephrology                                                                              \\
+    SONG-HD       & Standardised Outcomes In Nephrology - Haemodialysis                                                              \\
+    SONG-HD-F     & Standardised Outcomes In Nephrology - Haemodialysis - Fatigue                                                    \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -433,45 +438,56 @@ For full details of each outcome refer to the relevant section.
 Outcome                                                  & \makecell{Baseline\\(Clinic)}   & \makecell{Week 4\\(Phone)}     & \makecell{Week 8\\(Phone)}     & \makecell{Week 12\\(Clinic)}    & \makecell{Week 36\\(Clinic)}    \\
 \midrule
 \multicolumn{6}{l}{\textbf{Primary outcome}}                                                                                      \\
-\hspace{1em}FACIT-Fatigue                                & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[primary-outcome]{FACIT-Fatigue}    & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\midrule
 \multicolumn{6}{l}{\textbf{Secondary outcomes}}                                                                                   \\
 \hspace{0.5em}\textit{Patient-reported outcomes}         &                    &            &            &            &            \\
-\hspace{1em}SONG-HD-F                                    & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
-\hspace{1em}PFS                                          & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
-\hspace{1em}EQ-5D-5L                                     & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
-\hspace{1em}HADS                                         & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
-\hspace{1em}PROMIS                                       & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
-\hspace{0.5em}\textit{Exercise professional assessments} &                    &            &            &            &            \\
-\hspace{1em}BMI                                          & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}Waist circumference                          & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}30 sec sit to stand                          & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}Modified wall push-up test                   & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}Timed up-and-go                              & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}6 min walk test                              & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}Arm curl test                                & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}Hand grip strength                           & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}Tinetti balance test                         & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}Fried Frailty Index                          & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}Physical activity/sleep                      & \Checkmark         &            &            & \Checkmark & \Checkmark \\
-\hspace{1em}Exercise adherence                           &                    & \Checkmark & \Checkmark & \Checkmark &            \\
+\hspace{1em}\hyperref[outcome:song-hd-f]{SONG-HD-F}      & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:pfs]{PFS}                  & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:eq5d5l]{EQ-5D-5L}          & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:hads]{HADS}                & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:promis-apsra]{PROMIS-APSRA}& \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:msus]{mSUS}                &                    &            &            &            & \Checkmark \\
+\midrule
+\hspace{0.5em}\textit{Exercise-professional assessments} &                    &            &            &            &            \\
+\hspace{1em}\hyperref[outcome:30sts]{30 sec sit to stand}& \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:mwp]{Modified wall push-up}& \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:tug]{Timed up-and-go}      & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:6mwt]{6 min walk test}     & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:act]{Arm curl test}        & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:hgs]{Hand grip strength}   & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:poma]{Tinetti POMA}        & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:ffi]{Fried Frailty Index}  & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:body]{BMI}                 & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:body]{Waist circumference} & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\hspace{1em}\hyperref[outcome:actigraph]{Physical activity/sleep (actigraph)}                     
+                                                         & \Checkmark         &            &            & \Checkmark & \Checkmark \\
+\midrule
+\hspace{0.5em}\textit{SONG core outcomes}                &                    &            &            &            &            \\
+\hspace{1em}Vascular access function                     &                    &            &            &            & \Checkmark \\
+\hspace{1em}Technique survival                           &                    &            &            &            & \Checkmark \\
+\hspace{1em}Peritoneal dialysis infections               &                    &            &            &            & \Checkmark \\
+\midrule
 \hspace{0.5em}\textit{Adverse events of interest}        &                    &            &            &            &            \\
+\hspace{1em}Mortality                                    &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
 \hspace{1em}Hospitalisations                             &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
-\hspace{1em}Death                                        &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
 \hspace{1em}Cardiac events                               &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
 \hspace{1em}Falls                                        &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
 \hspace{1em}Exercise related injuries                    &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
-\hspace{1em}Pre-exercise safety questionnaire            &                    & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
-\hspace{0.5em}\textit{SONG-HD core outcomes}             &                    &            &            &            &            \\
+\midrule
+\hspace{0.5em}\textit{Exercise adherence}                &                    &            &            &            &            \\
+\hspace{1em}Pre-exercise safety questionnaire            & \Checkmark         & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+\hspace{1em}Post-exercise questionnaire                  &                    & \Checkmark & \Checkmark & \Checkmark &            \\
 \bottomrule
 \end{tabular}
-\caption{Summary of study outcomes and measurement their occasions.}
+\caption{Summary of study outcomes and their measurement occasions.}
 \label{tab:study-outcomes}
 \end{table}
 
 \hypertarget{primary-outcome}{
   \subsection{Primary Outcome}\label{primary-outcome}}
 
-The primary outcome is fatigue as measured by the FACIT-Fatigue scale \cites{yellen1997measuring}{cella2002fatigue} at 12-weeks post-randomisation.
+The primary outcome is fatigue as measured by the \textbf{Functional Assessment of Chronic Illness Therapy - Fatigue Scale (FACIT-Fatigue)} \cites{yellen1997measuring}{cella2002fatigue} at 12-weeks post-randomisation.
 FACIT-Fatigue is a 13-item Likert scale, with each Likert item scored from 0 to 4.
 Level of fatigue is measured as the total score aggregated across the 13 items, ranging from 0 to 52.
 
@@ -483,111 +499,160 @@ For FACIT-Fatigue example norms for males and females between ages 18 to 70+ see
   \subsection{Secondary Outcomes}\label{secondary-outcomes}}
 
 \hypertarget{pro-outcomes}{
-  \subsubsection{Patient-Reported Outcomes}\label{pro-outcomes}}
+  \subsubsection{Patient-reported outcomes}\label{pro-outcomes}}
 
-The \textbf{Standardised Outcomes In Nephrology - Haemodialysis - Fatigue (SONG-HD-F)}...
+  \phantomsection
+\label{outcome:song-hd-f}
+The \textbf{Standardised Outcomes In Nephrology - Haemodialysis - Fatigue (SONG-HD-F)} \cite{ju2018establishing} is a 3 item Likert scale desgined to measure fatigue in the past week.
+Each Likert item is a scale from 0 to 3 resulting in an aggregated score ranging from 0 to 9.
 
+\phantomsection
+\label{outcome:pfs}
 The \textbf{Pittsburgh Fatigability Scale (PFS)} \cite{glynn2015pittsburgh} is a one-page, self-administered questionnarie that asks about level of exertion on a scale from 0 to 5 on 10 different activities.
 For each activity, a response for both physical and mental fatigue are elicited.
 A total score for phystical and mental fatigue are obtained by summing the respective rating for each activity, resulting in two scores each ranging from 0 to 50.
 
-\textbf{EQ-5D-5L} is a standardised measure of health-related quality of life that comprises five dimensions: mobility, self-care, usual activities, pain and discomfort, and anxiety and depression.
+\phantomsection
+\label{outcome:eq5d5l}
+The \textbf{EuroQol 5 Dimension 5 Level (EQ-5D-5L)} is a standardised self-report survey measure of health-related quality of life that comprises five dimensions: mobility, self-care, usual activities, pain and discomfort, and anxiety and depression.
 The five dimension each have five response levels of severity giving health scores ranging from 11111 (full health) to 55555 (worst health), equating to $5^5 = 3125$ potential health states.
 For analysis, the responses are routinely converted into an index representing the utility of the health state.
 The conversion, while not recommended by the EuroQol Group\footnote{EQ visual analog scale (VAS) is what EuroQol recommends for statistical analyses.}, proceeds by applying a societal preference function which generates scores anchored at 0 for death and 1 for perfect health and represent a societal valuation of health-related quality-of-life.
 The conversion only works for complete data.
 See \url{https://cran.r-project.org/web/packages/eq5d/vignettes/eq5d.html} and \url{https://link.springer.com/book/10.1007\%2F978-3-030-47622-9} for more detail.
 
-
+\phantomsection
+\label{outcome:hads}
 The \textbf{Hospital Anxiety and Depression Scale (HADS)} \cite{zigmond1983hospital} is a questionnaire designed to measure anxiety and depression in a general medical population of patients.
 It comprises seven questions each for anxiety and depression scored separately.
 Each item is scored from 0 to 3 and aggregated across the seven questions resulting in two scores in the range of 0 to 21, one for anxiety and one for depression.
 
-\textbf{Patient-reported outcomes:}
+\phantomsection
+\label{outcome:promis-apsra}
+The \textbf{Patient Reported Outcomes Measurement Information System - Ability to Participate in Social Roles and Activities (PROMIS-APSRA) v2.0 4a} \cite{cella2019promis} is a 4 item questionnaire dessigned to assesses the perceived ability to perform one’s usual social roles and activities.
+The 4 Likert items are on a scale of 1 to 5 resulting in aggregated raw scores ranging from 4 to 20.
+
+\phantomsection
+\label{outcome:msus}
+The \textbf{modified System Usability Scale (mSUS)} assesses the the experience (user-friendliness, complexity, consistency, and user confidence) that users have with systems (applications, hardware) as well as benchmarking products against well-known, highly used systems.
+
+\hypertarget{epa-outcomes}{
+  \subsubsection{Exercise-physiologist assessed outcomes}\label{epa-outcomes}}
+
+\phantomsection
+\label{outcome:30sts}
+The \textbf{30 sec sit to stand test (30STS)} \cites{rikli1999development}{jones199930}{macfarlane2006validity} is a test to assess lower body strength, endurance, and coordination.
+The patient completes as many stands from a chair as possible in 30 seconds.
+
+\phantomsection
+\label{outcome:mwp}
+The \textbf{modified wall push-up test (MWP)} is aimed at testing a patient’s upper body strength and endurance. 
+The patient completes as many push-ups as possible in 30 seconds while standing against a wall. 
+
+\phantomsection
+\label{outcome:tug}
+The \textbf{timed up-and-go test (TUG)} \cites{podsiadlo1991timed}{shumway2000predicting} is used to assess mobility, balance, walking ability, and fall risk.
+Patients stand from a seated position, walk 3 meters, turn around, walk back, and sit back down. 
+The aim is to complete this in as little time as possible.
+
+\phantomsection
+\label{outcome:act}
+The \textbf{arm curl test (ACT)} \cites{rikli1999development}{liu2017predicting} is used as a predictor of elbow flexor strength. 
+Patients complete as many arm curl repetitions as possible in 30 seconds using a designated dumbbell weight.
+
+\phantomsection
+\label{outcome:hgs}
+The \textbf{hand-grip strength test (HGS)} \cite{liu2017predicting} is used as a measure of overall body strength.
+Using a hand grip dynamometer, patients use one hand to apply as much force as possible in a squeezing action.
+The amount of force is reported in kilograms.
+
+\phantomsection
+\label{outcome:6mwt}
+The \textbf{six-minute walk test (6MWT)} \cites{butland1982two}{buvcar2016six} is a sub-maximal exercise test performed to assess aerobic endurance. 
+For 6 minutes patients walk as far as possible utilising a 15 or 30-metre stretch of uninterrupted pathway as a course.
+The total distance walked is reported (metres).
+
+\phantomsection
+\label{outcome:poma}
+The \textbf{Tinetti Performance Oriented Mobility Assessment (POMA)} \cites{tinetti1986fall}{wyngaert2020associations} is a battery of assessments aimed at measuring a patients gait and balance abilities.
+Scoring is done separately for balance (score range 0 to 12) and gait (score range 0 to 16), and the two results combined for a score out of 28.
+A lower score implies higher risk of falls.
+
+\phantomsection
+\label{outcome:ffi}
+The \textbf{Fried Frailty Index (FFI)} \cites{fried2001frailty}{het2015fried} is an assessment of physical functioning through both questions and physical assessments.
+Five criteria comprise the assessment: shrinkage (weight loss), exhaustion, slowness, physical activity, and weakness.
+Weight loss is either self-reported (or calculated if data is available) over the last year, exhaustion is determined by two questions from the Geriatric Depression Scale (GDS), physical activity is self-reported weekly activity, slowness is determined by timed up-and-go, and weakness is determined from hand-grip strength.
+The sum of scores in these categories classifies individuals into three frailty conditions: not frail, pre-frail and frail. 
+
+\phantomsection
+\label{outcome:body}
+Body compoisition will be assessed by \textbf{waist circumference} (cm) and \textbf{Body Mass Index (BMI)} (kg/m\textsuperscript{2}).
+
+\phantomsection
+\label{outcome:actigraph}
+Minutes of \textbf{physical activity} and \textbf{sleep} will be measured using an Actigraph wrist accelerometer in the 7 days prior to intervention and the 7 days before intervention ends.
+
+\hypertarget{song-outcomes}{
+  \subsubsection{SONG-HD outcomes}\label{song-outcomes}}
+
+\textbf{Vascular access function}
+
+\textbf{Technique survival}
+
+\textbf{Peritoneal dialysis infections}
+
+\hypertarget{safety-outcomes}{
+  \subsubsection{Safety outcomes}\label{safety-outcomes}}
+
+\textbf{Hospitalisations} (admissions, LoS, days admitted).
+
+\hypertarget{adherence-outcomes}{
+  \subsubsection{Adherence}\label{adherence-outcomes}}
+  
+A \textbf{pre-exercise safety questionnaire} will be administered immediately before the patient begins every exercise session is used to determine the safety of the patient to complete an exercise session. The site exercise professional is also able to track any injuries, medication changes or health issues a patient may be having and adjust exercise prescription as necessary.
+The questionnaire will ask about the participants capacity to exercise, and they self-report as limited capacity, then additional questions of their condition will be asked (cold/flu symptoms, nausea, muscle/joint/bone problems, etc.).
+
+The \textbf{post-exercise questionnaire} is a simple report on patients’ self-adherence to the exercise regimen and intensity of exercise. This allows the site exercise professional to monitor patient performance and adjust exercise prescription where necessary to remain in the designated target intensity level.
+The questionnaire will ask whether the participant completed the days exericse, and how difficult they perceived it to be.
+
+\hypertarget{economic-outcomes}{
+  \subsubsection{Economic outcomes}\label{economic-outcomes}}
+
+Data linkage
+
+Health-care resource use
+  
+Cost-effectiveness
+
+
+\hypertarget{baseline}{
+  \subsection{Baseline demographics}\label{baseline}}
+
+The following information will be collected at baseline interview:
+
 \begin{itemize}
-  \item Quality of Life (EQ-5D-5L)
-  \item Fatigue (SONG-HD Fatigue measure)
-  \item Fatigue (Pittsburgh Fatigability Scale)
-  \item Life participation (PROMIS Ability to Participate in Social Roles and Activities)
-  \item Mood (Hospital Anxiety and Depression Scale)
+  \tightlist
+  \item age
+  \item sex
+  \item ethnicity
+  \item country of birth
+  \item primary kidney disease
+  \item co-morbidities including smoking
+  \item dialysis modality
+  \item occupational status
+  \item highest level of education achieved
+  \item marital status
 \end{itemize}
-
-\textbf{Clinical Outcomes:}
-\begin{itemize}
-  \item Vascular access function (rate of intervention)
-  \item Technique survival (TBC from workshop)
-  \item Peritoneal dialysis (PD) infections (peritonitis, exit site infection, tunnel infection)
-  \item Physical activity (actigraph accelerometers/fitbit TBC)
-  \item Sleep (actigraph accelerometer/fibit TBC)
-\end{itemize}
-
-\textbf{Exercise-physiologist assessed outcomes:}
-\begin{itemize}
-  \item Neuromuscular fitness:
-        \begin{itemize}
-          \item hand grip strength (maximal torque)
-          \item timed up-and-go (power)
-          \item 30s sit-to-stand
-          \item modified wall push-up test (strength endurance)
-          \item arm curl test arm curl test
-          \item Tinetti balance instrument (balance)
-        \end{itemize}
-
-  \item Exercise capacity:
-        \begin{itemize}
-          \item six-minute walk test
-          \item normal and maximal walking speed (sub-maximal exercise capacity)
-        \end{itemize}
-
-  \item Body composition:
-        \begin{itemize}
-          \item height and weight (body mass index)
-          \item waist circumference
-        \end{itemize}
-
-  \item Frailty:
-        \begin{itemize}
-          \item Fried phenotype\footnote{is this a single composite measure?} (weight loss, exhaustion, low physical activity, slowness, weakness)
-        \end{itemize}
-
-  \item Adherence (self-report, pre/post exercise study-specific questionnaire)
-
-  \item Cognitive function:
-        \begin{itemize}
-          \item executive and processing speed
-        \end{itemize}
-
-\end{itemize}
-
-
-
-\textbf{Economic Outcomes:}
-\begin{itemize}
-  \item Health-care resource use
-  \item Cost-effectiveness
-\end{itemize}
-
-\hypertarget{safety-outcomes}{%
-  \subsection{Safety Outcomes}\label{safety-outcomes}}
-
-The safety outcomes are as follows
-
-\begin{itemize}
-  \item Mortality (hospital administrative data)
-  \item Hospitalisation (hospital administrative data)
-  \item Cardiovascular event (MI, sudden cardiac death via hospital administrative data)
-  \item Nausea, vomiting, diarrhoea, muscle/joint/bone problems, injury, falls (exercise physiologist)
-\end{itemize}
-
-\hypertarget{covariates}{%
-  \subsection{Covariates}\label{covariates}}
-
-The primary model will include terms to characterise time trends, a time by treatment interaction and varying terms for participant and therapist clustering.
-
-TBD - additional variables will be included to account for prognostic factors at baseline?
 
 \hypertarget{subgroups}{%
   \subsection{Subgroups}\label{subgroups}}
+
+Pre-specified sub groups:
+
+\begin{itemize}
+  \item exercise preference
+\end{itemize}
 
 \clearpage
 
