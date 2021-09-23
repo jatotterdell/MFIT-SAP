@@ -100,6 +100,8 @@
     filecolor=blue,
     urlcolor=blue,
 }
+\usepackage{setspace}
+\onehalfspacing
 \urlstyle{same}
 \usepackage[backend=biber,style=nature]{biblatex} %Imports biblatex package
 \addbibresource{main.bib} %Import the bibliography file
@@ -109,7 +111,7 @@
 % -----------------
 
 % The current version and title of the document (keep headers consistent)
-\newcommand{\currentVersion}{July 2021 - Version 0.2}
+\newcommand{\currentVersion}{September 2021 - Version 0.3}
 \newcommand{\currentTitle}{M-FIT Statistical Analysis Plan}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -117,6 +119,10 @@
 \DeclarePairedDelimiter\nint{\lfloor}{\rceil}
 \newcommand*{\argminl}{\argmin\limits}
 \newcommand*{\argmaxl}{\argmax\limits}
+
+% Combine number and name reference with label
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}} % One single link
+
 
 \newcommand{\blandscape}{\begin{landscape}}
 \newcommand{\elandscape}{\end{landscape}}
@@ -160,6 +166,7 @@
       Version & Date       & Author & Description   \\ \hline
       0.1     & 2021-04-23 & MAJ    & First draft   \\
       0.2     & 2021-07-27 & JAT    & Revisions \\
+      0.3     & 2021-09-23 & JAT    & Revisions \\
       \hline
     \end{tabular}
   \end{center}
@@ -174,7 +181,7 @@ This statistical analysis plan (SAP) outlinse the data and procedures for analys
 
 The following documents were reviewed when preparing this SAP:
 
-- M-FIT Study Protocol version 0.9.6, 17 June 2021
+- M-FIT Study Protocol version 0.9.7, 2 September 2021
 
 \clearpage
 
@@ -227,9 +234,9 @@ M-FIT is a multi-centre, adaptive randomised comparative effectiveness trial of 
 The trial will compare exercise regimes delivered by exercise physiologists and a mobile-app that aim to alleviate fatigue in patients on dialysis.
 Specifically, the trial will evaluate
 
-\begin{itemize}
+\begin{itemize}\tightlist
   \item the comparative effectiveness of a structured exercise program on fatigue in patients receiving dialysis
-  \item the effectiveness of each therapy relative to a pseudo-control arm
+  \item the effectiveness of each therapy relative to an attention-control intervention
 \end{itemize}
 
 The main stakeholder/decision maker is the Australasian Kidney Trials Network (AKTN), who will facilitate translating and disseminating trial findings into treatment guidelines.
@@ -237,15 +244,16 @@ The full stakeholder pool is diverse with a range of objectives.
 
 The study is open-label; patients, clinicians and analysts will know who was allocated to which therapy.
 However, trial interim results are confidential until the final analysis.
-As noted, the primary analysis is based on the 13-item 52-point FACIT-Fatigue\footnote{FACIT-F (as opposed to FACIT-Fatigue) is a related 40-item measure that also assesses self-reported fatigue and its impact upon daily activities and function. M-FIT uses the 13-item scale.} (Functional Assessment of Chronic Illness Therapy – Fatigue) score that will track individual-level fatigue over time.
+
+The primary analysis is based on the 13-item 52-point FACIT-Fatigue\footnote{FACIT-F (as opposed to FACIT-Fatigue) is a related 40-item measure that also assesses self-reported fatigue and its impact upon daily activities and function. M-FIT uses the 13-item scale.} (Functional Assessment of Chronic Illness Therapy – Fatigue) score that will track individual-level fatigue over time.
 The score ranges from 0 to 52 and is reverse coded so that \underline{higher scores imply less fatigue}.
 The intervention therapies comprise:
 
-\begin{enumerate}
-  \item pseudo-control: non-exercise based activity (stretching)
+\begin{enumerate}\tightlist
+  \item attention-control: non-exercise based activity (stretching)
   \item walking
-  \item resistance and aerobic
   \item resistance-only
+  \item resistance and aerobic
 \end{enumerate}
 
 The therapies are delivered via an initial face-to-face assessment with an exercise physiologist and are followed-up over 12 weeks with weekly telehealth visits in weeks 1 to 4, 6 and 8 and a final follow up session in week 12.
@@ -254,8 +262,6 @@ Additionally, there is direction from a mobile-app.
 Data collection is in part entered by study personnel, but also provided directly by the participant since they respond to surveys via the mobile application.
 
 The design is a Bayesian (group sequential) adaptive randomised trial with response adaptive randomisation.
-The original conception of the trial proposed a patient-preference design, however, simulation work suggested that this will be infeasible given the funding resources that are available.
-The trial in its current form includes consideration of patient preference as a subgroup analysis.
 
 \clearpage
 
@@ -281,22 +287,6 @@ To assess the comparative effectiveness of alternative structured exercise progr
   \item To evaluate the influence (if any) of participant preferences for the assigned interventions on fatigue and exercise adherence.
   \item To assess hospital admissions, mortality, exercise-related injuries, and cardiovascular events for all participants.
 \end{enumerate}
-
-
-\clearpage
-
-\hypertarget{to-be-discussed}{%
-  \subsection{Notes to self (please ignore, these will be removed later)}\label{to-be-discussed}}
-
-These are notes made by MAJ as the SAP is being developed.
-Ultimately, they will either be integrated into the main text or deleted.
-
-\textbf{Baseline measures:} What are the set of baseline and prognostic measures to collect and incorporate into models (primary and secondary)?
-
-\textbf{Predictors of LTFU and Crossover:} What to collect?
-See pragmatic guidelines.
-Post randomisation causes of confounding.
-
 
 \clearpage
 
@@ -358,10 +348,10 @@ Participants are excluded from M-FIT if they meet any of the following criteria:
   \subsection{Interventions}\label{interventions}
 }
 
-The trial interventions consist of four different structured exercise programs: walking, resistance training, combination aerobic (cardio) and resistance training, and stretching.
+The trial interventions consist of three different structured exercise programs: walking, resistance training, combination aerobic (cardio) and resistance training, and a single attention-placebo control group (stretching).
 There are five levels of exercise prescription within the walking, resistance training, and aerobic and resistance training intervention arms.
 At baseline, the administering exercise professional will select the level of exercise deemed most appropriate for the patient.
-The stretching arm will be assigned a set of stretches to complete for 12 weeks.
+The control arm will be assigned a set of stretches to complete for 12 weeks.
 
 All participants will be provided with a mobile application.
 The mobile application gives the participant access to demonstration videos applicable to their allocated group, and trial outcome assessment questionnaires.
@@ -389,15 +379,18 @@ For full details of what each individual intervention entails, refer to the stud
   \subsection{Randomisation}\label{randomisation}}
 
 Eligible participants will be randomised by research staff via a proprietary randomisation system and their assignment transcribed to the RedCap patient database.
-The randomisation system was developed, validated and hosted by University of Sydney and has secure access, full audit trial and redundancy.
+The randomisation system was developed, validated and will be hosted by University of Sydney and has secure access, full audit trial and redundancy.
 Participants, clinical staff and analysts are unblinded to allocation.
 
 Participants will initially be randomised in 1:1:1:1 allocation between the four intervention arms.
-Following each interim analysis, the allocation ratios to intervention arms will be updated to be proportional to the posterior probability that the intervention is most effective at reducing fatigue at 12 weeks.
+Following each interim analysis, the allocation ratios to intervention arms will be updated.
+The target allocation to the attention-control arm will remain fixed as the recipricol of the number of arm still available in the trial, for example, if one arm is dropped following an interim, then the allocation to control would be 1/3.
+For the exercise arms, the target allocation will be proportional to the posterior probability that the intervention is most effective at reducing fatigue at 12 weeks.
+
 If an intervention's posterior probability of being best falls below a pre-specified threshold then the allocation to that intervention may be set to 0 and the intervention dropped from the trial.
 If the probability exceeds a pre-specified threshold then that intervention may be declared superior and randomisation stopped.
 
-Randomisation probabilities will be updated by the trial statistician directly after the completion of each interim analysis.
+Randomisation probabilities will be updated by the trial statistician directly after the completion of each interim analysis \textbf{(or after meeting with the DSMB?)}.
 Section \ref{response-adaptive-randomisation} contains further details on the calculation used to compute the randomisation probabilities.
 
 \hypertarget{blinding}{%
@@ -490,10 +483,12 @@ Outcome                                                  & \makecell{Baseline\\(
 The primary outcome is fatigue as measured by the \textbf{Functional Assessment of Chronic Illness Therapy - Fatigue Scale (FACIT-Fatigue)} \cites{yellen1997measuring}{cella2002fatigue} at 12-weeks post-randomisation.
 FACIT-Fatigue is a 13-item Likert scale, with each Likert item scored from 0 to 4.
 Level of fatigue is measured as the total score aggregated across the 13 items, ranging from 0 to 52.
+Lower scores imply a higher level of fatigue.
 
 FACIT-Fatigue scores will be measured at baseline visit (week 0) and study visits at weeks 4, 8, and 12.
 The data must be collected within five days of the scheduled visit.
 For FACIT-Fatigue example norms for males and females between ages 18 to 70+ see \cite{montan2018general}.
+For an example in a dialysis population see \cite{wang2015psychometric}.
 
 \hypertarget{secondary-outcomes}{
   \subsection{Secondary Outcomes}\label{secondary-outcomes}}
@@ -648,23 +643,26 @@ The following information will be collected at baseline interview:
 \hypertarget{subgroups}{%
   \subsection{Subgroups}\label{subgroups}}
 
-Pre-specified sub groups:
+Pre-specified subgroups are:
 
 \begin{itemize}
   \item exercise preference
 \end{itemize}
+
+Refer to \fullref{subgroup-analyses} for details of planned subgroup analysis.
 
 \clearpage
 
 \hypertarget{statistical-modelling}{%
   \section{Statistical Modelling}\label{statistical-modelling}}
 
-In this section we outline considerations relevant to the statistical modelling approached used in M-FIT.
+In this section we outline considerations relevant to the statistical modelling approach used in M-FIT.
 These include a discussion on the analysis population, model specifications, subgroup, secondary and other analyses.
 
-All inference will be made within a Bayesian framework; general principles include:
+Inferences will be made within a Bayesian framework; general principles include:
 
 \begin{itemize}
+  \tightlist
   \item application of intention-to-treat
   \item accompanying descriptive statistics
   \item number of participants used in each analysis and reasons for exclusions
@@ -672,6 +670,9 @@ All inference will be made within a Bayesian framework; general principles inclu
   \item accompanying assumptions for priors
   \item evaluation of goodness-of-fit
 \end{itemize}
+
+Due to repeated measure of outcomes during follow-up, analyses will generally use mixed models suitable to the outcome type.
+For example, approximately continuous outcomes will be analysed using normal linear mixed effects models, counts using Poisson linear mixed models, and ordinal outcomes using cumulative logistic mixed models.
 
 \hypertarget{analysis-population}{%
   \subsection{Analysis Population}\label{analysis-population}}
@@ -684,84 +685,109 @@ These conditions may necessitate regular medicine and/or other therapies, which 
 As such, there are a range of factors that may intermittently or permanently interfere with an individual's ability to continue with their allocated exercise prescriptions and these could conceivably cause issues in the analyses.
 As an obvious example, there could easily be differential withdrawal or adherence across the treatment arms.
 
+\subsubsection{Intention-to-treat Analyses}
+
 Our primary analysis will include all participants randomised to an intervention arm regardless of whether intercurrent events disrupted the allocated exercise regime.
 That is, we will adopt an intention-to-treat (ITT) principle for the analyses with all randomised participants contributing to the analysis such that:
 
 \begin{itemize}
   \tightlist
-  \item
-        patients will be analysed in the group they were allocated to
-  \item
-        patients that do not receive (either partially or fully) the intervention will be retained
-  \item
-        protocol deviations will not result in automatic exclusion
-  \item
-        patients who die before end of the study  will be included in the analysis population until their time of death
+  \item patients will be analysed in the group they were allocated to
+  \item patients that do not receive (either partially or fully) the intervention will be retained
+  \item protocol deviations will not result in automatic exclusion
+  \item patients who die before end of the study  will be included in the analysis population until their time of death
 \end{itemize}
 
-We note that ITT tends to produce conservative estimates of the treatment effect and introduces heterogeneity in the presence of non-adherence.
+\subsubsection{Per-Protocol Analyses}
+
+
 
 \hypertarget{descriptive-statistics}{%
   \subsection{Descriptive statistics}\label{descriptive-statistics}}
 
-Descriptive statistics will be calculated and presented by intervention arm and in aggregate for all baseline variables.
+Descriptive statistics will be calculated and presented by arm and in aggregate for all relevant baseline variables.
 Categorical variables will be summarised by counts and proportions.
 Continuous variables will be summarised by means and standard deviations or medians and interquartile ranges.
 
-\hypertarget{primary-model}{%
-  \subsection{Primary Model}\label{primary-model}}
+Descriptive and exploratory summaries all also be produced for study outcomes at each visit by arm and in aggregate.
 
-The primary analysis will use a longitudinal model for participant fatigue as measured by FACIT-Fatigue over the 12 weeks follow up.
-All adaptations will be based on the relative intervention effects at 12 weeks post-randomisation, but we will also report the results at the other followup times.
+For the primary outcome... MVN model for MAR summaries of mean and SD at each visit accounting for missingness.
+Note this would be per-protocol summary (withdrawal implies non-adherence which may be different to those observed on the who adhered trial).
+
+\hypertarget{primary-model}{%
+  \subsection{Primary Outcome Model}\label{primary-model}}
+
+The primary analysis will use a longitudinal model for participant fatigue as measured by FACIT-Fatigue over the first 12 weeks of follow-up.
+All adaptations will be based on the relative intervention effects at 12 weeks post-randomisation, but we will also report the results at the other follow-up times.
 
 While the FACIT-Fatigue score is ordinal in the range of 0-52, the primary analysis assumes a continuous response.
-This approach simplifies both the implementation and interpretation, but it also makes the assumption that the numerical distance between each set of subsequent categories is equal and that the numeric scale really does underlie the ordered classification.
+This approach simplifies both the implementation and interpretation.
 
-The final analysis will occur at the maximum sample size (or lower if early stopping occurs) after all participants have reached the primary endpoint and the follow-up data collected to 36 weeks\footnote{Are we going to wait this long or will we report on the primary after the 12 week follow up is reached by all participants?}.
+The final analysis will occur at the maximum sample size (or lower if early stopping occurs) after all participants have reached the primary endpoint and the follow-up data collected to 36 weeks.
 We will determine treatment comparative effectiveness based on the posterior distribution from the primary analysis.
 The interim analyses will use the same model specification as the final analysis; also see \nameref{trial-adaptations-and-statistical-decisions}.
 
 \hypertarget{model-specification}{%
   \subsubsection{Model specification}\label{model-specification}}
 
-Denoting $y_{i}$ as the $i^{th}$ standardised (centered at zero with sd of one) FACIT-Fatigue score (a 13-item scale where scores range from 0 to 52, with 0 being the worst and 52 the best indicating no fatigue), we will model a baseline-adjusted score as\footnote{Are other prognostic variables to be included?}
+The pre-specified primary model  be a linear mixed model assuming an unstructured mean model for the outcomes at each visit occasion and treatment, and with subject-specific random intercept and visit coefficients.
 
-\[
+We denote by $j\in\{0,1,2,3\}$ the visit occasion (0, 4, 8, or 12 weeks), and by $\texttt{trt}_i\in\{0,1,2,3\}$ the treatment assigned to participant $i$.
+Denote by $y_{ij}$ the FACIT-Fatigue score for participant $i$ at visit $j$.
+Then, for $i=1,...,n$ and $j=0,...,3$,
+$$
+\begin{aligned}
+\mu_{ij}|\gamma_i &= (\alpha+\gamma_{i0}) + (\beta_j + \xi_{\texttt{trt}_i,j} + \gamma_{ij})1_{j>0} \\
+y_{ij}|\mu_{ij},\sigma^2 &\sim \text{Normal}\left(\mu_{ij}, \sigma^2\right)
+\end{aligned},
+$$
+where
+$$
+\begin{aligned}
+  \gamma_i &\sim \text{Normal}\left(0, \Omega\right) \\
+  \Omega &= \text{diag}(\tau)\Lambda\text{diag}(\tau).
+\end{aligned}
+$$
+
+The model parameters are:
+
+\begin{itemize}
+  \tightlist
+  \item $\alpha$ - the expected FACIT-Fatigue at baseline (shared across all intervention groups)
+  \item $\beta_j$ - the change in FACIT-Fatigue from baseline to visit $j$ in the attention-control group
+  \item $\xi_{\texttt{trt},j}$ - the effect of intervention $\texttt{trt}$ at visit $j$ relative to attention-control at visit $j$
+  \item $\gamma_{i0}$ - random intercept for participant $i$
+  \item $\gamma_{ij}$ - random coefficient for visit $j$ for participant $i$
+  \item $\sigma^2$ - residual variance of FACIT-Fatigue
+\end{itemize}
+A landmark analysis at visit $j=3$ informs the primary comparison between treatments.
+
+For priors, we specify
+$$
   \begin{aligned}
-    y_{i} & \sim \mathcal{N}(\mu_{i}, \sigma_e^2) \\
-    \mu_i & = \begin{cases}
-      \alpha + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]}                                                                        & \mathsf{if \ at \ baseline} \\
-      \alpha + \beta_{\mathsf{time}[i]} + \gamma_{\mathsf{time}[i],\mathsf{trt}[i]} + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]} & \mathsf{otherwise}
-    \end{cases}
-  \end{aligned}
-\]
+  \sigma &\sim \text{Student-t}(3, 0, 5^2) \\
+  \tau_j &\sim \text{Student-t}(3, 0, 5^2),\quad j=1,2,3 \\
+  \Lambda &\sim \text{LKJ}(1) \\
+  \alpha &\sim \text{Normal}\left(\text{med}(y), \text{mad}(y)^2\right) \\
+  \text{(alt. [population norms]) } \alpha &\sim \text{Normal}(40, 5^2) \\
+  \beta_j &\sim \text{Normal}\left(0, 5\right),\quad j=1,2,3 \\
+  \xi_{\texttt{trt},j} &\sim \text{Normal}(0, 5),\quad \texttt{trt}=1,2,3,\quad j=1,2,3
+\end{aligned}
+$$
+where $\text{med}(y)$ and $\text{mad}(y)$ are the sample median and scaled median absolute deviation respectively.
 
-with priors and constraints (sum-to-zero within each time point for identifiability)
-
-\begin{gather*}
-  \alpha \sim \mathcal{N}(0, 10^2), \quad \beta \sim \mathcal{N}(0, 1), \quad \gamma \sim \mathcal{N}(0, 1) \\
-  \sum_j \gamma_{k,j} = 0 \quad \forall k  \\
-  \sigma_e^2 \sim \text{IG}(0.01, 0.01), \quad \sigma_\nu^2 \sim \text{IG}(0.01, 0.01), \quad \sigma_\upsilon^2 \sim \text{IG}(0.01, 0.01) \\
-  \nu_{\mathsf{id}[i]} \sim \mathcal{N}(0, \sigma_\nu^2) \quad \upsilon_{\mathsf{therapist}[i]} \sim \mathcal{N}(0, \sigma_\upsilon^2) \\
-\end{gather*}
-
-
-In the preceding, $\mathsf{time}[i] \in \{4 \mathsf{\ weeks}, 8 \mathsf{\ weeks}, 12 \mathsf{\ weeks}\}$ indicates the timing of the $i^{th}$ outcome observation and $\mathsf{trt}[i] = 1, 2, 3, 4$ indicates the treatment arm to which the $i^{th}$ observation belongs.
-The (non-linear) time parameter constitute deviations from the average fatigue at baseline.
-The treatment by time interaction parameter models the differences in deviations from the average baseline fatigue score by time.
-The random effects $\nu_{\mathsf{id}[i]}$ and $\upsilon_{\mathsf{therapist}[i]}$ account for the repeat measures on individuals and clustering by therapist respectively.
-The primary quantity of interest is taken to be the relative values of $\gamma_{3,\mathsf{trt}}$ for $\mathsf{trt} = 1, 2, 3, 4$ where the 3 prefix is the index for the 12 week follow up.
+Although the unstructured mean model is the proposed default, a more parsimonious specification may be appropriate in light of the observed data (e.g. linear or piece-wise linear with respect to time since randomisation).
 
 \hypertarget{subgroup-analyses}{%
   \subsection{Subgroup Analyses}\label{subgroup-analyses}}
 
-Subgroup analyses for the primary model will examine heterogeneity in the FACIT-Fatigue score at 12 weeks post-randomisation arising from variation in baseline treatment arm preference (including control option).
+Subgroup analyses for the primary model will examine heterogeneity in the FACIT-Fatigue score at 12 weeks post-randomisation arising from baseline exercise arm preference.
 Participants state their preference at baseline and are categorised according to:
 
-\begin{enumerate}
-  \item indifferent / no preference / did not state a preference
+\begin{enumerate}\tightlist
+  \item no particular preference
   \item preference for a particular exercise:
-        \begin{enumerate}
+        \begin{enumerate}\tightlist
           \item preference for walking
           \item preference for resistance and aerobic
           \item preference for resistance-only
@@ -770,32 +796,34 @@ Participants state their preference at baseline and are categorised according to
 
 Participants who have a preference may receive that intervention by chance when randomised.
 This defines an additional two groups:
-\begin{enumerate}
-  \item received their preference
-  \item did not receive their preference
+\begin{enumerate}\tightlist
+  \item participants who received their preference
+  \item participants did not receive their preference
 \end{enumerate}
 
-A first subgroup analysis allows an expanded model where receiving the preferred treatment may alter the effect of that treatment.
-This model incorporate a time by preference interaction and a time by treatment by preference interaction.
+A participant having a preference is a baseline variable, and whether the participant receives their preferred exercise is post-randomisation.
+
+A first subgroup analysis allows an expanded model where receiving the preferred exercise intervention may alter the effect of the intervention, but that any such effect is non-differential across the exercises.
 The expanded model is then
+$$
+\begin{aligned}
+\mu_{ij} = (\alpha + \gamma_{i0} + \zeta\texttt{hp}_i) + (\beta_j + \xi_{j}^\mathsf{T}\texttt{t}_i + \gamma_{ij} + \zeta\texttt{hp}_i + \kappa_j\texttt{rp}_i)1_{j>0}
+\end{aligned}
+$$
+where here $\texttt{t}_i$ indicates treatment, $\texttt{hp}_i\in\{0,1\}$ indicates whether the participant expressed having a preference or not, and $\texttt{rp}_i\in\{0,1\}$ indicates whether the participant received their preference.
+The model priors are analogous to the primary analysis model.
 
-\[
-  \begin{aligned}
-    y_{i} & \sim \mathcal{N}(\mu_{i}, \sigma_e^2) \\
-    \mu_i & = \begin{cases}
-      \alpha + \phi_{\mathsf{pref}[i]} + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]}                                                                                                             & \mathsf{if \ at \ baseline} \\
-      \alpha + \phi_{\mathsf{pref}[i]} + \beta_{\mathsf{pref}[i], \mathsf{time}[i]} + \gamma_{\mathsf{pref}[i], \mathsf{time}[i],\mathsf{trt}[i]} + \nu_{\mathsf{id}[i]} + \upsilon_{\mathsf{therapist}[i]}, & \mathsf{otherwise}
-    \end{cases}
-  \end{aligned}
-\]
+Alternatively, the effect of receiving preferred exericse may be allowed to vary according to the specific exercise preferred, by introducing an interaction term between $\texttt{t}_i$ and $\texttt{rp}_i$.
 
-with analogous priors and subject to sum-to-zero identifiability constraints.
+\hypertarget{secondary-analyses-primary}{%
+  \subsection{Secondary Analyses of Primary Outcome}\label{secondary-analyses-primary}}
 
-TBD - James - add in the additional subgroup analyses that you think are worth exploring.
-- full selection/preference/treatment model
+Ordinal model?
+
+Item-specific analysis? E.g. instead of analysing aggregate FACIT-Fatigue, ordinal model of items themselves as factor?
 
 \hypertarget{secondary-analyses}{%
-  \subsection{Secondary Analyses}\label{secondary-analyses}}
+  \subsection{Secondary Outcome Analyses}\label{secondary-outcome-analyses}}
 
 The secondary outcomes are a mix of continuous, discrete and categorical variables, some collected at multiple timepoints over the duration of the study.
 The following provides brief specifications for the analyses of each of the secondary outcomes.
@@ -1001,6 +1029,41 @@ These analyses are beyond the scope of the SAP.
 Dialysis patients are generally not lost to follow up due to the nature of their treatment protocols.
 Withdrawal of consent is also typically low in this population (around 5\%).
 However, adherence can be a problem and safety is an ongoing concern.
+Interim missingness might also occur if participants are on occassion unable or unwilling to complete the study questionnaires within the protocol timeframe.
+Such interim missingness could be differential between treatments groups.
+For example, if a particular exercise regimen does reduce fatigue, participants may be more willing to or capable of completing the requisite survey items compared 
+to participants who are experiencing greater fatigue under a different intervention.
+
+\subsubsection{Baseline}
+
+Patterns of missingness for the baseline data will be reported by intervention group.
+Baseline covariates which are to be included in the pre-specified models will be imputed, if missing, using information in the other baseline covariates.
+Study outcomes measured at baseline will be included in the response model.
+
+\subsubsection{Follow-up}
+
+Patterns of missingness for follow-up data will be reported and summarised by intervention group across all measurement occasions.
+We will investigate the relationships between baseline covariates and withdrawal or interim missingness of follow-up observations.
+
+\begin{table}[!ht]
+  \centering
+  \small
+  \begin{tabular}{lrrrr}
+  \toprule
+  N (\%) & Baseline & Week 4 & Week 8 & Week 12 \\
+  \midrule
+  xx (xx) & \Checkmark & \Checkmark & \Checkmark & \Checkmark \\
+  xx (xx) & \Checkmark & \Checkmark & \Checkmark &   \\
+  xx (xx) & \Checkmark & \Checkmark &  &   \\
+  xx (xx) & \Checkmark &  &  &   \\
+  xx (xx) &  &  \Checkmark & \Checkmark & \Checkmark   \\
+  xx (xx) & \Checkmark &  &  \Checkmark &   \\
+  \multicolumn{5}{c}{etc.} \\
+  \bottomrule
+  \end{tabular}
+  \caption{Example summary of data missingness for study outcome. Observed values indicated by \Checkmark.}
+\end{table}
+
 
 Under the missing completely at random (MCAR) and missing at random (MAR) assumptions, there will be some loss of precision due to the missingness, but there is no bias in the parameter estimates when appropriate statistical methods are used.
 However, under missing not at random (MNAR) the probability of missingness depends on the (unobserved) missing values.
@@ -1008,7 +1071,6 @@ When missingness is due to MNAR, there is both a loss in precision and bias and 
 MAR is commonly assumed, although MNAR is arguably more applicable for most settings.
 For M-FIT, there is potential for MNAR as differential LTFU could be observed across treatment groups.
 
-Patterns of missingness for the outcome and covariates will be reported by time and group.
 As missingness is expected to be relatively low, we will simply undertake analyses based on all available data.
 If concerns arise regarding missingness (or a sensitivity analysis is requested) single value imputation may be used implementing a best-worst-case and worst-best-case sensitivity analyses to evaluate the potential scope of impact of missing values.
 For continuous variables best-worst-case will use group means plus/minus two standard deviations.
@@ -1018,18 +1080,10 @@ For continuous variables best-worst-case will use group means plus/minus two sta
 
 TBD - can people add suggestions here?
 
-Explore more general correlation structures for primary outcome.
-E.g. instead of random intercept (positive compound symmetry) could assume unstructured, or a more realistic correlation such as model with heterogeneity by time point and serial correlation between time points, say AR(1). So, drop random intercept for ID and just specify
-$$
-  y_i \sim \mathcal{N}(\mu_i, \Sigma),\quad
-  \Sigma = \begin{pmatrix}
-    \sigma_{1}^2 & \sigma_{12} & \sigma_{13} & \sigma_{14}  \\
-    \sigma_{12}  & \sigma_2^2  & \sigma_{23} & \sigma_{24}  \\
-    \sigma_{13}  & \sigma_{23} & \sigma_3^2  & \sigma_{34}  \\
-    \sigma_{14}  & \sigma_{24} & \sigma_{34} & \sigma_{4}^2
-  \end{pmatrix}
-$$
-directly for whatever assumed co-variance model, where $y_i$ is vector of responses of participant $i$ at each time point with mean $\mu_i$ as determined by the primary model. Could assess model comparison/fit compared to primary etc.
+- prior sensitivity anlayses
+- more parsimonious model
+- varying modelling assumptions (e.g. distributional, missing data etc.)
+
 
 \hypertarget{safety-analyses}{%
   \subsection{Safety Analyses}\label{safety-analyses}}
@@ -1118,29 +1172,28 @@ As the trial proceeds, the accrued information is used to make decisions on the 
 For example, treatment arms may show evidence of being inferior relative to all others and therefore enrollment would cease for these arms.
 
 For adaptations internal to the trial, predefined rules are in place to inform trial decisions conditional on the primary model.
-Pending independent oversight from a DSMC, these statistical decisions will inform conclusions such as declaring arms to be superior or inferior.
+Pending independent oversight from a DSMC, these statistical decisions will inform conclusions such as deciding arms to be superior or inferior.
 The following sections outline these adaptations.
 
 \hypertarget{sequential-analyses}{%
   \subsection{Sequential Analyses}\label{sequential-analyses}}
 
-We will run regular interim analyses with the first one triggered when \(n=100\) participants have reached the 12 week primary endpoint (regardless of whether the outcome was observed or not).
-After the first analysis, interim analyses will occur for every additional \(100\) participants enrolled up to a maximum sample size of \(400\).
+We will run regular interim analyses scheduled according to the sample size of participants with follow-up to the primary endpoint.
+The first analysis will occur when \(n=100\) participants have reached the 12 week primary endpoint (regardless of whether the outcome was observed or not).
+After the first analysis, interim analyses will occur for every additional \(100\) participants who reach the primary endpoint up to the maximum sample size of \(400\).
 If recruitment is slow, we may seek permission to revise this rule.
 
 The analyses will include the data from all the enrolled participants at the time when the $'00^{th}$ participant reaches the 12 week primary endpoint.
 That is to say that some of the participants will only contribute their baseline data, some will contribute their baseline and 4 week follow up and so on.
 
-Note that given that the design uses response adaptive randomisation, we made the decision not to incorporate predictive probabilities into the analyses as it would be prohibitively complicated to implement given the available resources.
-
 \hypertarget{stopping-rules}{%
   \subsection{Stopping rules}\label{stopping-rules}}
 
-Enrollment into the trial will be stopped prior to the maximum sample size if:
+Enrollment into the trial may be stopped prior to the maximum sample size if:
 
-\begin{itemize}
-  \item one of the therapies is declared superior at the nominated decision threshold
-  \item all arms bar one have been declared inferior at the nominated decision threshold
+\begin{itemize}\tightlist
+  \item one of the exercise arms is declared superior and effective at the nominated decision thresholds
+  \item all exercise arms have been declared inferior at the nominated decision threshold
 \end{itemize}
 
 Additionally, the trial may be stopped early due to safety concerns.
@@ -1149,19 +1202,53 @@ Otherwise the trial will continue until the maximum sample size.
 \hypertarget{response-adaptive-randomisation}{%
   \subsection{Response-Adaptive Randomisation}\label{response-adaptive-randomisation}}
 
-The response-adaptive randomisation methodology allocates treatment arms with probability proportional to the product of the probability an arm is the best therapy (in terms of reducing fatigue) and the variance of the posterior change in fatigue divided by the sample size on that arm.
-Note that the response adaptive randomisation is based on the comparison amongst the active arms at the week 12 follow up.
-Specifically, we will compute allocation probabilities according to
+Target allocation to exercise arms will be updated to be proportional to a transformation of the probability an exercise arm is the best (in terms of reducing fatigue), the variance of the posterior change in fatigue divided, and the sample size on that arm.
+Note that the response adaptive randomisation is based on the comparison amongst the active exercise arms at the week 12 follow up.
 
-\[
-  \begin{aligned}
-    r_{k} \propto \sqrt{ \frac{\pi_k \mathsf{V}[\gamma_k | \mathsf{data} ]}{ n_k + 1}  }
-  \end{aligned}
-\]
+Following an interim analysis, an exercise arm may be dropped if:
+\begin{itemize}\tightlist
+  \item it is inferior to the other exercise arms (probability of it being superior below decision threshold)
+  \item it is inferior to the attention-control arm (probability of it being effective below decision threshold).
+\end{itemize}
 
-which would then be renormalised across all active $k$.
-Arms that have previously been declared inferior will have an allocation probability of $0$.
+Denote by $\mathcal{A}_t$ the set of exercise arm indices which will continue in the trial following the current interim $t$.
+If an exercise arm satisfies either of the above criteria, then it may be removed from $\mathcal{A}_t$.
 
+We will compute allocation probabilities according to
+$$
+\begin{aligned}
+r_{t0} &= \frac{1}{|\mathcal{A}_t + 1} \\
+r_{tk} &= \begin{cases}
+  0 & \text{if } k \notin \mathcal{A}_t \\
+  (1 - r_0) \frac{f(\pi_k, \mathbb V[\gamma_k|\mathsf{dat}], n_k)}{\sum_{j=1}^3 f(\pi_j, \mathbb V[\gamma_j|\mathsf{dat}], n_j)} & \text{if }k\in\mathcal{A}_t
+\end{cases}, \quad k=1,2,3.
+\end{aligned}
+$$
+where $f(\pi, V, n) = \sqrt{\pi V/(n + 1)}$, and $\mathcal{A}_0 = \{1,2,3\}$ is the avaialable exercise arms at trial start.
+Once an arm is dropped from the trial, it is unavailable for the remainder of the trial, that is, $\mathcal{A}_{t+1} \subseteq \mathcal{A}_t$.
+
+In practice, the target allocations may be updated prior to confirmation of the decision on arm dropping (e.g. TSC may have final decision in whether to drop an arm), in which case the relevant values of $r_t$ 
+will be set to zero only after such a confirmation has been made, and the remaining arm allocations re-normalised to sum-to-one.
+
+In essence, two updates would then occur.
+The first being an update without any arm dropping
+$$
+\begin{aligned}
+  r_{t0}^\star &= r_{t-1,0} \\
+  r_{tk}^\star &= (1 - r_{t0}^\star)\frac{f(\pi_k, \mathbb V[\gamma_k|\mathsf{dat}], n_k)}{\sum_{k=1}^3 f(\pi_k, \mathbb V[\gamma_k|\mathsf{dat}], n_k)}, \quad k\in\mathcal{A}_{t-1}
+\end{aligned}
+$$
+and then following confirmation that arms are to be dropped
+$$
+\begin{aligned}
+  r_{t0} &= \frac{1}{|\mathcal{A}_t + 1} \\
+  r_{tk} &= \begin{cases}
+    0 & \text{if } k \notin \mathcal{A}_t \\
+    (1 - r_{t0}) \frac{r_{tk}^\star}{\sum_{j\in\mathcal{A}_t} r_{tj}^\star} & \text{if } k \in \mathcal{A}_t.
+  \end{cases}, \quad k=1,2,3.
+\end{aligned}
+$$
+In this manner, if a decision is made to \emph{not} drop an arm despite it meeting the criteria, the update to allocations does not need to be revised.
 
 \hypertarget{model-deviations}{%
   \subsection{Model Deviations}\label{model-deviations}}
@@ -1170,24 +1257,16 @@ The primary analysis model will be assessed for adequacy.
 Additional models (either simpler or more complex) may be investigated as part of checks of sensitivity, stability, and model fit.
 If any issues or concerns arise, all changes or updates to the specified primary model will be documented and reported including justification of the changes.
 
+For example, if there are issues with the random coefficients model, then a saturated mean model with unstructured covariance may be used instead, ignoring subject specific trajectories.
+
 \clearpage
 
 \hypertarget{interim-analyses-and-trial-reporting}{%
   \section{Interim Analyses and Trial Reporting}\label{interim-analyses-and-trial-reporting}}
 
-A DSMC report template can be found at \url{https://github.com/adaptivehealthintelligence/ahitemplates}.
-To use the templates:
+Following each scheduled interim analysis, a closed DSMC report will be generated with the following content:
 
-\begin{itemize}
-  \item clone the github repository
-  \item install the ahitemplate package via \texttt{R CMD INSTALL ahitemplate} (or equivalent)
-  \item through RStudio create a new Rmarkdown file from templates selecting \textit{AHI DMSB Report}
-\end{itemize}
-
-Alternatively, use whatever documentation software preferred and include content for the following sections:
-
-\begin{itemize}
-  \tightlist
+\begin{itemize}\tightlist
   \item
         Executive summary
   \item
@@ -1200,18 +1279,20 @@ Alternatively, use whatever documentation software preferred and include content
         Enrollment status including rates of enrollment
   \item
         Participant status
+  \item 
+        Data completeness
   \item
-        Descriptive statistics for baseline demographic stratified by treatment arm and follow up time
+        Descriptive statistics for baseline demographic, co-morbidities, and other baseline factors, stratified by treatment arm and in aggregate
   \item
         Descriptive statistics of adherence to treatment protocol, protocol violations and dropouts
-  \item
-        Summary of baseline health status comorbidities
   \item
         Safety data
   \item
         Protocol deviations
+  \item 
+        Descriptive statistics pertaining to the primary outcome
   \item
-        Results from primary analysis
+        Inference results from primary analysis
   \item
         Appendix: As required
 \end{itemize}
@@ -1240,6 +1321,7 @@ Communication of trial outcomes will occur under the following conditions:
 Exceptions may be made to this rule:
 
 \begin{itemize}
+  \tightlist
   \item to support necessary applications for funding
   \item based on requests from the DSMC for additional information
 \end{itemize}
