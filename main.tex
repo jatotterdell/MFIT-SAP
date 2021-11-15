@@ -618,6 +618,8 @@ Minutes of \textbf{physical activity} and \textbf{sleep} will be measured using 
 \hypertarget{song-outcomes}{
   \subsubsection{SONG-HD outcomes}\label{song-outcomes}}
 
+SONG-HD core outcomes will be collected at week 36.
+
 \textbf{Vascular access function}
 
 The need for any intervention required to enable and maintain the use of a vascular access for haemodialysis.
@@ -647,10 +649,33 @@ Vascular access interventions include:
 
 \textbf{Peritoneal dialysis infections}
 
+
 \hypertarget{safety-outcomes}{
   \subsubsection{Safety outcomes}\label{safety-outcomes}}
 
-\textbf{Hospitalisations} (admissions, LoS, days admitted).
+Adverse Events of Speical Interest (AESI) will be recorded as part of regular data collection activities.
+The following events are of special interest:
+\begin{itemize}\tightlist
+  \item Death
+  \item Hospitalisation
+  \item Cardiovascular events
+  \item Injurious falls and resultant events
+  \item Hypoglycaemia
+  \item Musculoskeletal injuries
+  \item Diabetes related complications
+\end{itemize}
+
+Serious adverse events (SAE) are any events that:
+\begin{itemize}\tightlist
+  \item Led to death
+  \item Led to serious deterioration in the health of the subject, that either resulted in:
+  \begin{itemize}\tightlist
+    \item A life-threatening illness or injury, or
+    \item A permanent impairment of a body structure or a body function, or
+    \item In-patient or prolonged hospitalization, or
+    \item Medical or surgical intervention to prevent life-threatening illness or injury or permanent impairment to a body structure or a body function.
+  \end{itemize}
+\end{itemize}
 
 \hypertarget{adherence-outcomes}{
   \subsubsection{Adherence}\label{adherence-outcomes}}
@@ -664,12 +689,8 @@ The questionnaire will ask whether the participant completed the days exericse, 
 \hypertarget{economic-outcomes}{
   \subsubsection{Economic outcomes}\label{economic-outcomes}}
 
-Data linkage
-
-Health-care resource use
-  
-Cost-effectiveness
-
+Health-care utilisation and associated costs will be investigated by linkage to administrative data.
+Costings will rely on diagnostic related group (DRG) codes or urgency related groups (URG) or equivalent. 
 
 \hypertarget{baseline}{
   \subsection{Baseline demographics}\label{baseline}}
@@ -756,12 +777,13 @@ That is, we will adopt an intention-to-treat (ITT) principle for the analyses wi
 
 \subsubsection{Per-Protocol Analyses}
 
-Secondary analyses will investigate a per-protocol effect where a participants adherence is taken into consideration.
+Secondary analyses will investigate per-protocol effects where a participants adherence is taken into consideration.
 These analyses will use the information collected in the post-exercise questionnaire on self-reported adherence on whether exercise was completed on that day.
 
 \textbf{
+What is considered a protocol deviation to cause exclusion from a per-protocol set?
 How will we account for adherence, what aspect of adherence is most relevant? 
-Restrict the analysis population to only those deemed to be "adherers".
+Restrict the per-protocol analysis population to only those deemed to be "adherers"?
 An "adherer" anyone who completes at least x\% of exercise sessions as expected?
 Continuous measure of adherence, e.g. proportion of sessions completed out of total expected number of exercise sessions?
 }
@@ -798,59 +820,11 @@ The interim analyses will use the same model specification as the final analysis
 \hypertarget{model-specification}{%
   \subsubsection{Model specification}\label{model-specification}}
 
-The primary model will be a multivariate linear model with unstructured mean and variance for the primary outcome at each visit occassion.
-The specified model is (where $x_i$ encodes the intervention assigned to participant $i$, and $z_i$ other baseline covariates)
-
-$$
-  \begin{aligned}
-    \mu_{ij} &= \alpha + (\beta_j + x_i^\mathsf{T}\xi_{j})1_{\{j>0\}} + z_i^\mathsf{T}\zeta \\
-    y_i &\sim \text{Normal}(\mu_i, \Sigma) \\
-    \Sigma &= \text{diag}(\sigma)\Lambda\text{diag}(\sigma) \\
-    &= \text{diag}(\sigma)LL^\mathsf{T}\text{diag}(\sigma) \\
-    &= \begin{pmatrix}
-      \sigma_0^2 & \sigma_0\rho_{10}\sigma_1 & \sigma_0\rho_{20}\sigma_2 & \sigma_0\rho_{30}\sigma_3 \\
-      \sigma_0\rho_{10}\sigma_1 & \sigma_{1}^2 & \sigma_1\rho_{21}\sigma_2 & \sigma_1\rho_{31}\sigma_3 \\
-      \sigma_0\rho_{20}\sigma_2 & \sigma_1\rho_{21}\sigma_2 & \sigma_{2}^2 & \sigma_2\rho_{32}\sigma_3 \\
-      \sigma_0\rho_{30}\sigma_3 & \sigma_1\rho_{31}\sigma_3 & \sigma_2\rho_{32}\sigma_3 & \sigma_{3}^2 \\
-    \end{pmatrix}
-  \end{aligned}
-$$
-
-The model parameters are:
-
-\begin{itemize}
-  \tightlist
-  \item $\alpha$ - the expected FACIT-Fatigue at baseline (shared across all intervention groups)
-  \item $\beta_j$ - the change in FACIT-Fatigue from baseline to visit $j$ in the attention-control group
-  \item $\xi_{kj}$ - the effect of intervention $k$ at visit $j$ relative to attention-control at visit $j$
-  \item $\sigma_j^2$ - residual variance of FACIT-Fatigue scores at visit $j$ (assumed homogeneous across treatments)
-  \item $\rho_{lj}$ - residual correlation of FACIT-Fatigue scores between visit $l$ and visit $j$ (assumed homogeneous across treatments).
-\end{itemize}
-A landmark analysis at visit $j=3$ informs the primary comparison between treatments.
-
-
-The specified priors are:
-
-$$
-\begin{aligned}
-  \alpha &\sim \text{Normal}\left(\text{med}(y), \text{mad}(y)^2\right) \\
-  \text{(alt. [population norms]) } \alpha &\sim \text{Normal}(40, 5^2) \\
-  \beta_j &\sim \text{Normal}\left(0, 5\right),\quad j=1,2,3 \\
-  \xi_{kj} &\sim \text{Normal}(0, 5),\quad k=1,2,3,\quad j=1,2,3 \\
-  \sigma_j &\sim \text{Student-}t(3, 0, 5) \\
-  L &\sim \text{LKJ}(2) 
-\end{aligned}
-$$
-where $\text{med}(y)$ and $\text{mad}(y)$ are the sample median and scaled median absolute deviation respectively.
-
-\
-\hrule
-
 The pre-specified primary model  be a linear mixed model assuming an unstructured mean model for the outcomes at each visit occasion and treatment, and with subject-specific random intercept and visit coefficients.
 
-We denote by $j\in\{0,1,2,3\}$ the visit occasion (0, 4, 8, or 12 weeks), and by $k\in\{0,1,2,3\}$ the treatment assigned to participant $i$ and encoded by $x_i$.
+We denote by $j\in\{0,1,2,3, 4\}$ the visit occasion (0, 4, 8, 12, or 36 weeks), and by $k\in\{0,1,2,3\}$ the treatment assigned to participant $i$ and encoded by $x_i$.
 Denote by $y_{ij}$ the FACIT-Fatigue score for participant $i$ at visit $j$.
-Then, for $i=1,...,n$ and $j=0,...,3$,
+Then, for $i=1,...,n$ and $j=0,1,2,3,4$,
 $$
 \begin{aligned}
 \mu_{ij}|\gamma_i &= (\alpha+\gamma_{i0}) + (\beta_j + x_i^\mathsf{T}\xi_{j} + \gamma_{ij})1_{j>0} \\
@@ -882,20 +856,16 @@ For priors, we specify
 $$
   \begin{aligned}
   \sigma &\sim \text{Student-t}(3, 0, 5^2) \\
-  \tau_j &\sim \text{Student-t}(3, 0, 5^2),\quad j=1,2,3 \\
-  \Lambda &\sim \text{LKJ}(1) \\
+  \tau_j &\sim \text{Student-t}(3, 0, 5^2),\quad j=1,2,3,4 \\
+  \Lambda &\sim \text{LKJ}(2) \\
   \alpha &\sim \text{Normal}\left(\text{med}(y), \text{mad}(y)^2\right) \\
-  \text{(alt. [population norms]) } \alpha &\sim \text{Normal}(40, 5^2) \\
-  \beta_j &\sim \text{Normal}\left(0, 5\right),\quad j=1,2,3 \\
-  \xi_{kj} &\sim \text{Normal}(0, 5),\quad k=1,2,3,\quad j=1,2,3
+  \beta_j &\sim \text{Normal}\left(0, 5\right),\quad j=1,2,3,4 \\
+  \xi_{kj} &\sim \text{Normal}(0, 5),\quad k=1,2,3,\quad j=1,2,3,4
 \end{aligned}
 $$
 where $\text{med}(y)$ and $\text{mad}(y)$ are the sample median and scaled median absolute deviation respectively.
 
-\
-\hrule
-
-Although the unstructured mean model is the proposed default, a more parsimonious specification may be appropriate in light of the observed data (e.g. linear or piece-wise linear with respect to time since randomisation).
+Although the unstructured mean model is the proposed default, a more parsimonious specification may be appropriate in light of the observed data (e.g. linear or piece-wise linear with respect to visit).
 
 \hypertarget{subgroup-analyses}{%
   \subsection{Subgroup Analyses}\label{subgroup-analyses}}
@@ -1142,18 +1112,15 @@ TBD - Specify here or leave as separate for Health Economists?
 \hypertarget{model-checks}{
 \subsection{Model Checks}\label{model-checks}}
 
-The primary analysis model will be assessed for adequacy.
+The assumed models will be assessed for adequacy.
 Additional models (either simpler or more complex) may be investigated as part of checks of sensitivity, stability, and model fit.
 If any issues or concerns arise, all changes or updates to the specified primary model will be documented and reported including justification of the changes.
+Model assessment and comparison will be via posterior predictive checks and cross-validation.
 
-\textit{
-For example, if there are issues with the random coefficients model, then a saturated mean model with unstructured covariance may be used instead, ignoring subject specific trajectories.
-Alterantively, random slopes and intercepts model may be assumed with time since randomisation treated as a continuous covariate rather than categorical occassions.
-Similarly, a simpler covarinace structure maybe assumed if there are issues with an unstructuered covariance
-}
+For the priamry outcome, if there are issues with convergence or stability of the primary outcome linear mixed model, 
+then the primary analysis may revert to a multivariate normal model with similar mean structure for the marginal effects, and an unstructured covariance matrix.
 
 Any deviations from the pre-specified model will be reported along with the reasons for deviating.
-
 
 \hypertarget{qualitative-analyses}{%
   \subsection{Qualitative Analyses}\label{qualitative-analyses}}
@@ -1174,7 +1141,7 @@ For example, if a particular exercise regimen does reduce fatigue, participants 
 to participants who are experiencing greater fatigue under a different intervention which may correspond with outcomes missing not at random (MNAR).
 
 The primary analysis will assume that outcomes may be missing at random (MAR) under the specified longutidinal model.
-Sensitivty anlayses will make investigate inferences under various MNAR assumptions. 
+Sensitivty anlayses will investigate the sensitivity of inferences under various MNAR assumptions using multiple imputation. 
 
 \subsubsection{Baseline}
 
@@ -1211,10 +1178,17 @@ We will investigate the relationships between baseline covariates and withdrawal
 \hypertarget{sensitivity-analyses}{%
   \subsection{Sensitivity Analyses}\label{sensitivity-analyses}}
 
-TBD - can people add suggestions here?
+Sensitivity of treatment effect estimates to the prior on the treatment parameters will be assessed via importance sampling or independent model fits where necessary.
+The prior variance for the treatment specific terms will be varied and the posterior summaries reported as a function of this variance.
 
-- MNAR scenarios (e.g. interim missingness due to worse fatigue at those occassions? What to assume for response profiles? Pattern of responses after drop-out?)
-- prior sensitivity analyses (mainly treatment effects)
+Sensitivity to the MAR assumption will be investigated by instead allowing MNAR via pattern mixture modelling 
+where the outcomes for participants who dropped out, or did not adhere are conditional on the response\dots
+
+For example, in the intent-to-treat analysis, participants who drop-out may be assumed to have ceased exercise, 
+and their expected FACIT-Fatigue scores to have reverted to baseline level.
+If there are participants with follow-up who are known to have not adhered to their assigned intervention, 
+then this data might alternatively be used to inform expected responses in participants post drop-out.
+However, this will be conditional on the availability of such data.
 
 
 \hypertarget{safety-analyses}{%
